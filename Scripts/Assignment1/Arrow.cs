@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Assignment1.Scripts
+namespace Assignment1.Scripts.Assignment1
 {
     internal class Arrow : GameObject
     {
@@ -17,7 +17,7 @@ namespace Assignment1.Scripts
         private float arrowSpeed;
         public Arrow(string path, Player player) : base(player.position, path)
         {
-            this.Player = player;
+            Player = player;
         }
 
         protected internal override void Initialize(GraphicsDeviceManager graphics)
@@ -62,7 +62,7 @@ namespace Assignment1.Scripts
         {
             if (position.Y < 0 || position.X < 0 || position.Y > 1920 || position.X < 1080)
             {
-                
+
             }
         }
     }

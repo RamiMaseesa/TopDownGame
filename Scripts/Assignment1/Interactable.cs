@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
-namespace Assignment1.Scripts
+namespace Assignment1.Scripts.Assignment1
 {
     internal class Interactable : GameObject
     {
@@ -49,7 +49,7 @@ namespace Assignment1.Scripts
 
             if (isColliding)
             {
-                spriteBatch.DrawString(font, text, new Vector2(position.X - (textSize.X / 2) + 5, position.Y + 50f), Color.White);
+                spriteBatch.DrawString(font, text, new Vector2(position.X - textSize.X / 2 + 5, position.Y + 50f), Color.White);
             }
         }
 

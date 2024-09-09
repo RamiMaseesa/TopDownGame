@@ -2,7 +2,7 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace Assignment1.Scripts
+namespace Assignment1.Scripts.Assignment1
 {
     internal class Shield : Interactable
     {

@@ -1,4 +1,5 @@
 ﻿using Assignment1.Scripts;
+using Assignment1.Scripts.Assignment1;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;

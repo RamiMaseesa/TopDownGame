@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 
-namespace Assignment1.Scripts
+namespace Assignment1.Scripts.Assignment1
 {
     internal class GameObject
     {
@@ -17,7 +17,7 @@ namespace Assignment1.Scripts
         protected internal Texture2D sprite;
 
         protected KeyboardState kstate;
-        public GameObject(Vector2 position,string path)
+        public GameObject(Vector2 position, string path)
         {
             this.position = position;
             this.path = path;

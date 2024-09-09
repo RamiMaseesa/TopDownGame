@@ -1,6 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 
-namespace Assignment1.Scripts
+namespace Assignment1.Scripts.Assignment1
 {
     internal class Background : GameObject
     {
@@ -13,7 +13,7 @@ namespace Assignment1.Scripts
         {
             base.Initialize(graphics);
             // update color of back ground
-            color = new Color(100,130,100,155);
+            color = new Color(100, 130, 100, 155);
         }
     }
 }
