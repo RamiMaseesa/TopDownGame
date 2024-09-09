@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
-namespace TopDownGame.Scripts.Assignment1
+namespace TopDownGame.Scripts.Assignment2
 {
     internal class Interactable : GameObject
     {

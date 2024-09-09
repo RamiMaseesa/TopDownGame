@@ -1,6 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 
-namespace TopDownGame.Scripts.Assignment1
+namespace TopDownGame.Scripts.Assignment2
 {
     internal class Background : GameObject
     {

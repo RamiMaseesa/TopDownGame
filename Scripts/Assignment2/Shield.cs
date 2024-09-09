@@ -2,7 +2,7 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace TopDownGame.Scripts.Assignment1
+namespace TopDownGame.Scripts.Assignment2
 {
     internal class Shield : Interactable
     {

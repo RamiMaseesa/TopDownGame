@@ -2,17 +2,18 @@
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using System;
 using System.Collections.Generic;
 
-namespace TopDownGame.Scripts.Assignment1
+namespace TopDownGame.Scripts.Assignment2
 {
     internal class Bow : Interactable
     {
+        public List<Arrow> arrows;
+
         private string arrowPath;
-        private List<Arrow> arrows;
         private ContentManager content;
         private KeyboardState previousKState;
+
         public Bow(Vector2 position, string path, string fontPath, string arrowPath) : base(position, path, fontPath)
         {
             this.arrowPath = arrowPath;
@@ -86,7 +87,7 @@ namespace TopDownGame.Scripts.Assignment1
             if (kstate.IsKeyDown(Keys.Space) && previousKState != kstate)
             {
                 Arrow newArrow;
-                arrows.Add(newArrow = new Arrow(arrowPath, player));
+                arrows.Add(newArrow = new Arrow(arrowPath, player, this));
                 newArrow.Initialize(graphics);
                 newArrow.LoadContent(content, graphics);
             }

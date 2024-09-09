@@ -1,11 +1,9 @@
-﻿using Assignment1.Scripts;
-using Assignment1.Scripts.Assignment1;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System.Collections.Generic;
 
-namespace Assignment1
+namespace TopDownGame.Scripts.Assignment2
 {
     public class Game1 : Game
     {

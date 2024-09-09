@@ -1,23 +1,17 @@
 ﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Content;
-using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace TopDownGame.Scripts.Assignment1
+namespace TopDownGame.Scripts.Assignment2
 {
     internal class Arrow : GameObject
     {
         private Player Player;
         private Vector2 moveDir;
         private float arrowSpeed;
-        public Arrow(string path, Player player) : base(player.position, path)
+        private Bow bow;
+        public Arrow(string path, Player player, Bow bow) : base(player.position, path)
         {
-            Player = player;
+            this.Player = player;
+            this.bow = bow;
         }
 
         protected internal override void Initialize(GraphicsDeviceManager graphics)
@@ -51,6 +45,7 @@ namespace TopDownGame.Scripts.Assignment1
         {
             base.Update(gameTime, graphics);
             HandleArrowMovement();
+            HandleOutOfBounds();
         }
 
         private void HandleArrowMovement()
@@ -60,9 +55,9 @@ namespace TopDownGame.Scripts.Assignment1
 
         private void HandleOutOfBounds()
         {
-            if (position.Y < 0 || position.X < 0 || position.Y > 1920 || position.X < 1080)
+            if (position.Y < 0 || position.X < 0 || position.Y > 1080 || position.X > 1920)
             {
-
+                bow.arrows.Remove(this);
             }
         }
     }
