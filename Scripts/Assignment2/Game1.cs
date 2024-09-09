@@ -13,6 +13,7 @@ namespace TopDownGame.Scripts.Assignment2
         // list to store all objects
         private List<GameObject> objects = new List<GameObject>();
 
+        private GameStates gameState = GameStates.MainMenu;
         public Game1()
         {
             // game settings
