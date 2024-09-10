@@ -18,10 +18,12 @@ namespace TopDownGame.Scripts.Assignment2
         private MouseState mState;
         private MouseState previousMState;
         private SpriteFont font;
-        public ButtonBase(Vector2 position, string path, string fontPath, string text) : base(position, path)
+        private Game1 game1;
+        public ButtonBase(Vector2 position, string path, string fontPath, string text, Game1 game1) : base(position, path)
         {
             this.fontPath = fontPath;
             this.text = text;
+            this.game1 = game1;
         }
 
         protected internal override void Initialize(GraphicsDeviceManager graphics)
@@ -46,6 +48,7 @@ namespace TopDownGame.Scripts.Assignment2
 
             UpdateButtonColor();
             ChangeButtonState();
+            ChangeScene();
 
             previousMState = mState;
         }
@@ -81,6 +84,26 @@ namespace TopDownGame.Scripts.Assignment2
             if (buttonStatus == ButtonStatus.Hovered && mState.LeftButton == ButtonState.Released && previousMState.LeftButton == ButtonState.Pressed)
             {
                 buttonStatus = ButtonStatus.Pressed;
+
+                //onclick()
+            }
+        }
+
+        private void ChangeScene()
+        {
+            if (buttonStatus != ButtonStatus.Pressed) return;
+
+            if (text == "play")
+            {
+                game1.NextSceneInList();
+            }
+            else if (text == "quit")
+            {
+                game1.Quit();
+            }
+            else if (text == "menu")
+            {
+                game1.GoToMenu();
             }
         }
     }
