@@ -54,7 +54,7 @@ namespace TopDownGame.Scripts.Assignment2
             base.Update(gameTime, graphics);
 
             MoveMent(kstate, gameTime);
-            Collision(gameObjects, privousKstate);
+            Collision(gameObjects);
 
             privousKstate = kstate;
         }
@@ -137,7 +137,7 @@ namespace TopDownGame.Scripts.Assignment2
             position += movement * playerSpeed * deltaTime;
         }
 
-        private void Collision(List<GameObject> gameObjects, KeyboardState privousKstate)
+        private void Collision(List<GameObject> gameObjects)
         {
             // loop through all game objects
             foreach (GameObject gameObject in gameObjects)
@@ -151,7 +151,7 @@ namespace TopDownGame.Scripts.Assignment2
                         CheckToSwitchItems(interactable);
                     }
                     // if colliding, E is pressed Interactable is a gate
-                    else if (interactable.CheckCollisionWithPlayer(this) && kstate.IsKeyDown(Keys.E) && interactable is Gate gate)
+                    else if (interactable.CheckCollisionWithPlayer(this) && !kstate.IsKeyDown(Keys.E) && privousKstate.IsKeyDown(Keys.E) && interactable is Gate gate)
                     {
                         gate.EndGame();
                     }
