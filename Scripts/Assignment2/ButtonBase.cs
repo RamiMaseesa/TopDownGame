@@ -2,23 +2,23 @@
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using TopDownGame.Scripts.Assignment1;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace TopDownGame.Scripts.Assignment2
 {
     internal class ButtonBase : GameObject
     {
+        protected internal Game1 game1;
+        protected internal ButtonStatus buttonStatus;
+
         private string fontPath;
         private string text;
 
-        private ButtonStatus buttonStatus;
         private Vector2 textSize;
         private Rectangle mouseCollider;
         private MouseState mState;
         private MouseState previousMState;
         private SpriteFont font;
-        private Game1 game1;
+        
         public ButtonBase(Vector2 position, string path, string fontPath, string text, Game1 game1) : base(position, path)
         {
             this.fontPath = fontPath;
@@ -48,7 +48,6 @@ namespace TopDownGame.Scripts.Assignment2
 
             UpdateButtonColor();
             ChangeButtonState();
-            ChangeScene();
 
             previousMState = mState;
         }
@@ -57,7 +56,7 @@ namespace TopDownGame.Scripts.Assignment2
         {
             base.Draw(spriteBatch);
 
-            spriteBatch.DrawString(font, text, new Vector2(position.X - textSize.X / 2 + 5, position.Y - 23), color, 0f, Vector2.Zero, 1f, SpriteEffects.None, 1f);
+            spriteBatch.DrawString(font, text, new Vector2(position.X - textSize.X / 2 + 5, position.Y - 15), color, 0f, Vector2.Zero, 1f, SpriteEffects.None, 1f);
         }
 
         private void UpdateButtonColor()
@@ -85,26 +84,12 @@ namespace TopDownGame.Scripts.Assignment2
             {
                 buttonStatus = ButtonStatus.Pressed;
 
-                //onclick()
+                OnClick();
             }
         }
 
-        private void ChangeScene()
-        {
-            if (buttonStatus != ButtonStatus.Pressed) return;
-
-            if (text == "play")
-            {
-                game1.NextSceneInList();
-            }
-            else if (text == "quit")
-            {
-                game1.Quit();
-            }
-            else if (text == "menu")
-            {
-                game1.GoToMenu();
-            }
+        protected internal virtual void OnClick() { 
+            
         }
     }
 }

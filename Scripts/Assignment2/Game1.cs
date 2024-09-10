@@ -3,7 +3,6 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System;
 using System.Collections.Generic;
-using System.IO;
 
 namespace TopDownGame.Scripts.Assignment2
 {
@@ -25,6 +24,7 @@ namespace TopDownGame.Scripts.Assignment2
         private List<GameObject> level5 = new List<GameObject>();
 
         private GameStates gameState = GameStates.TitleScreen;
+        
         public Game1()
         {
             // game settings
@@ -35,23 +35,22 @@ namespace TopDownGame.Scripts.Assignment2
             Content.RootDirectory = "Content/Sprites";
             IsMouseVisible = true;
 
-            // create objects and add them to the list
+            // create objects and add them to Lists
 
             // title screen
             titleScreen.Add(new Background(new Vector2(_graphics.PreferredBackBufferWidth / 2, _graphics.PreferredBackBufferHeight / 2), "Background"));
-            titleScreen.Add(new ButtonBase(new Vector2(_graphics.PreferredBackBufferWidth / 2, 400), "button", "font", "Play", this));
-            titleScreen.Add(new ButtonBase(new Vector2(_graphics.PreferredBackBufferWidth / 2, 600), "button", "font", "Quit", this));
+            titleScreen.Add(new ButtonNextScene(new Vector2(_graphics.PreferredBackBufferWidth / 2, 400), "button", "fontSmall", "Continue", this));
             scenes.Add(titleScreen);
 
             // main menu
             mainMenu.Add(new Background(new Vector2(_graphics.PreferredBackBufferWidth / 2, _graphics.PreferredBackBufferHeight / 2), "Background"));
-            mainMenu.Add(new ButtonBase(new Vector2(_graphics.PreferredBackBufferWidth / 2, 400), "button", "font", "Play", this));
-            mainMenu.Add(new ButtonBase(new Vector2(_graphics.PreferredBackBufferWidth / 2, 600), "button", "font", "Quit", this));
+            mainMenu.Add(new ButtonNextScene(new Vector2(_graphics.PreferredBackBufferWidth / 2, 400), "button", "fontSmall", "Play", this));
+            mainMenu.Add(new ButtonQuit(new Vector2(_graphics.PreferredBackBufferWidth / 2, 600), "button", "fontSmall", "Quit", this));
             scenes.Add(mainMenu);
 
             // level 1
             level1.Add(new Background(new Vector2(_graphics.PreferredBackBufferWidth / 2, _graphics.PreferredBackBufferHeight / 2), "Background"));
-            level1.Add(new ButtonBase(new Vector2(_graphics.PreferredBackBufferWidth - 80, 50), "button", "font", "Menu", this));
+            level1.Add(new ButtonMainMenu(new Vector2(_graphics.PreferredBackBufferWidth - 80, 50), "button", "fontSmall", "Menu", this));
             level1.Add(new Gate(new Vector2(_graphics.PreferredBackBufferWidth / 2, 100), new string[] { "gateclosed", "gateopen" }, "font", this));
             level1.Add(new Sword(new Vector2(500, _graphics.PreferredBackBufferHeight / 2), "sword1", "font"));
             level1.Add(new Shield(new Vector2(1300, _graphics.PreferredBackBufferHeight / 2), new string[] { "shield1", "shield1back" }, "font"));
@@ -62,7 +61,7 @@ namespace TopDownGame.Scripts.Assignment2
 
             // level 2
             level2.Add(new Background(new Vector2(_graphics.PreferredBackBufferWidth / 2, _graphics.PreferredBackBufferHeight / 2), "Background"));
-            level2.Add(new ButtonBase(new Vector2(_graphics.PreferredBackBufferWidth - 80, 50), "button", "font", "Menu", this));
+            level2.Add(new ButtonMainMenu(new Vector2(_graphics.PreferredBackBufferWidth - 80, 50), "button", "fontSmall", "Menu", this));
             level2.Add(new Gate(new Vector2(_graphics.PreferredBackBufferWidth / 2, 100), new string[] { "gateclosed", "gateopen" }, "font", this));
             level2.Add(new Sword(new Vector2(500, _graphics.PreferredBackBufferHeight / 2), "sword2", "font"));
             level2.Add(new Shield(new Vector2(1300, _graphics.PreferredBackBufferHeight / 2), new string[] { "shield2", "shield2back" }, "font"));
@@ -73,7 +72,7 @@ namespace TopDownGame.Scripts.Assignment2
 
             // level 3
             level3.Add(new Background(new Vector2(_graphics.PreferredBackBufferWidth / 2, _graphics.PreferredBackBufferHeight / 2), "Background"));
-            level3.Add(new ButtonBase(new Vector2(_graphics.PreferredBackBufferWidth - 80, 50), "button", "font", "Menu", this));
+            level3.Add(new ButtonMainMenu(new Vector2(_graphics.PreferredBackBufferWidth - 80, 50), "button", "fontSmall", "Menu", this));
             level3.Add(new Gate(new Vector2(_graphics.PreferredBackBufferWidth / 2, 100), new string[] { "gateclosed", "gateopen" }, "font", this));
             level3.Add(new Sword(new Vector2(500, _graphics.PreferredBackBufferHeight / 2), "sword1", "font"));
             level3.Add(new Shield(new Vector2(1300, _graphics.PreferredBackBufferHeight / 2), new string[] { "shield1", "shield1back" }, "font"));
@@ -83,7 +82,7 @@ namespace TopDownGame.Scripts.Assignment2
 
             // level 4
             level4.Add(new Background(new Vector2(_graphics.PreferredBackBufferWidth / 2, _graphics.PreferredBackBufferHeight / 2), "Background"));
-            level4.Add(new ButtonBase(new Vector2(_graphics.PreferredBackBufferWidth - 80, 50), "button", "font", "Menu", this));
+            level4.Add(new ButtonMainMenu(new Vector2(_graphics.PreferredBackBufferWidth - 80, 50), "button", "fontSmall", "Menu", this));
             level4.Add(new Gate(new Vector2(_graphics.PreferredBackBufferWidth / 2, 100), new string[] { "gateclosed", "gateopen" }, "font", this));
             level4.Add(new Player(new Vector2(_graphics.PreferredBackBufferWidth / 2, _graphics.PreferredBackBufferHeight / 2),
                         new string[] { "player", "PlayerLeft", "playerRight", "playerBack" }, 400f, level4));
@@ -91,7 +90,7 @@ namespace TopDownGame.Scripts.Assignment2
 
             // level 5
             level5.Add(new Background(new Vector2(_graphics.PreferredBackBufferWidth / 2, _graphics.PreferredBackBufferHeight / 2), "Background"));
-            level5.Add(new ButtonBase(new Vector2(_graphics.PreferredBackBufferWidth - 80, 50), "button", "font", "Menu", this));
+            level5.Add(new ButtonMainMenu(new Vector2(_graphics.PreferredBackBufferWidth - 80, 50), "button", "fontSmall", "Menu", this));
             level5.Add(new Gate(new Vector2(_graphics.PreferredBackBufferWidth / 2, 100), new string[] { "gateclosed", "gateopen" }, "font", this));
             level5.Add(new Bow(new Vector2(_graphics.PreferredBackBufferWidth / 2, 800), "bow", "font", "arrow"));
             level5.Add(new Player(new Vector2(_graphics.PreferredBackBufferWidth / 2, _graphics.PreferredBackBufferHeight / 2),

@@ -116,6 +116,13 @@
 /processorParam:TextureFormat=Compressed
 /build:Sprites/font.spritefont
 
+#begin Sprites/fontSmall.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:PremultiplyAlpha=True
+/processorParam:TextureFormat=Compressed
+/build:Sprites/fontSmall.spritefont
+
 #begin Sprites/gateclosed.png
 /importer:TextureImporter
 /processor:TextureProcessor
