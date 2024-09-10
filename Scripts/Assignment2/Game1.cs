@@ -154,7 +154,7 @@ namespace TopDownGame.Scripts.Assignment2
         {
             gameState = (GameStates)(((int)gameState + 1) % Enum.GetValues(typeof(GameStates)).Length);
 
-            if ((int)gameState == scenes.Count)
+            if (gameState == GameStates.TitleScreen)
             {
                 GoToMenu();
                 return;
