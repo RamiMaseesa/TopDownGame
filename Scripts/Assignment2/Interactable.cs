@@ -15,11 +15,11 @@ namespace TopDownGame.Scripts.Assignment2
         public int offset;
 
         private Vector2 textSize;
-        private string fontpath;
+        private string fontPath;
 
-        public Interactable(Vector2 position, string path, string fontpath) : base(position, path)
+        public Interactable(Vector2 position, string path, string fontPath) : base(position, path)
         {
-            this.fontpath = fontpath;
+            this.fontPath = fontPath;
         }
 
         protected internal override void Initialize(GraphicsDeviceManager graphics)
@@ -33,8 +33,9 @@ namespace TopDownGame.Scripts.Assignment2
         protected internal override void LoadContent(ContentManager content, GraphicsDeviceManager graphics)
         {
             base.LoadContent(content, graphics);
-            font = content.Load<SpriteFont>(fontpath);
+            font = content.Load<SpriteFont>(fontPath);
             textSize = font.MeasureString(text);
+
         }
 
         protected internal override void Update(GameTime gameTime, GraphicsDeviceManager graphics)

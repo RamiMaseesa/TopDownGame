@@ -2,6 +2,8 @@
 {
     internal enum ButtonStatus
     {
-
+        Normal,
+        Hovered,
+        Pressed
     }
 }

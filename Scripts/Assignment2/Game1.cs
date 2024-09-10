@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System.Collections.Generic;
+using System.IO;
 
 namespace TopDownGame.Scripts.Assignment2
 {
@@ -22,19 +23,23 @@ namespace TopDownGame.Scripts.Assignment2
             _graphics.PreferredBackBufferHeight = 1080;
             _graphics.IsFullScreen = false;
             Content.RootDirectory = "Content/Sprites";
-            IsMouseVisible = false;
+            IsMouseVisible = true;
+
+            // background has to be created first
+            objects.Add(new Background(new Vector2(_graphics.PreferredBackBufferWidth / 2, _graphics.PreferredBackBufferHeight / 2), "Background"));
+
+            // create buttons
+            objects.Add(new ButtonBase(new Vector2(_graphics.PreferredBackBufferWidth - 80, 50), "button", "font", "Menu"));
 
             // create objects and add them to the list
-            objects.Add(new Background(new Vector2(_graphics.PreferredBackBufferWidth / 2, _graphics.PreferredBackBufferHeight / 2), "Background"));
+
 
             objects.Add(new Gate(new Vector2(_graphics.PreferredBackBufferWidth / 2, 100), new string[] { "gateclosed", "gateopen" }, "font", this));
 
             objects.Add(new Sword(new Vector2(500, _graphics.PreferredBackBufferHeight / 2), "sword1", "font"));
-            objects.Add(new Sword(new Vector2(600, _graphics.PreferredBackBufferHeight / 2), "sword2", "font"));
-            objects.Add(new Sword(new Vector2(700, _graphics.PreferredBackBufferHeight / 2), "sword3", "font"));
+
             objects.Add(new Shield(new Vector2(1300, _graphics.PreferredBackBufferHeight / 2), new string[] { "shield1", "shield1back" }, "font"));
-            objects.Add(new Shield(new Vector2(1400, _graphics.PreferredBackBufferHeight / 2), new string[] { "shield2", "shield2back" }, "font"));
-            objects.Add(new Shield(new Vector2(1500, _graphics.PreferredBackBufferHeight / 2), new string[] { "shield3", "shield3back" }, "font"));
+
             objects.Add(new Bow(new Vector2(_graphics.PreferredBackBufferWidth / 2, 800), "bow", "font", "arrow"));
 
             objects.Add(new Player(new Vector2(_graphics.PreferredBackBufferWidth / 2, _graphics.PreferredBackBufferHeight / 2),
