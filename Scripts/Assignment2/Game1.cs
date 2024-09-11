@@ -14,7 +14,6 @@ namespace TopDownGame.Scripts.Assignment2
         // list to store all objects
         private List<List<GameObject>> scenes = new List<List<GameObject>>();
 
-
         private List<GameObject> titleScreen = new List<GameObject>();
         private List<GameObject> mainMenu = new List<GameObject>();
         private List<GameObject> level1 = new List<GameObject>();
@@ -24,6 +23,7 @@ namespace TopDownGame.Scripts.Assignment2
         private List<GameObject> level5 = new List<GameObject>();
 
         private GameStates gameState = GameStates.TitleScreen;
+        private Player player;
         
         public Game1()
         {
@@ -55,8 +55,8 @@ namespace TopDownGame.Scripts.Assignment2
             level1.Add(new Sword(new Vector2(500, _graphics.PreferredBackBufferHeight / 2), "sword1", "font"));
             level1.Add(new Shield(new Vector2(1300, _graphics.PreferredBackBufferHeight / 2), new string[] { "shield1", "shield1back" }, "font"));
             level1.Add(new Bow(new Vector2(_graphics.PreferredBackBufferWidth / 2, 800), "bow", "font", "arrow"));
-            level1.Add(new Player(new Vector2(_graphics.PreferredBackBufferWidth / 2, _graphics.PreferredBackBufferHeight / 2),
-                        new string[] { "player", "PlayerLeft", "playerRight", "playerBack" }, 400f, level1));
+            level1.Add(player = new Player(new Vector2(_graphics.PreferredBackBufferWidth / 2, _graphics.PreferredBackBufferHeight / 2),
+                        new string[] { "player", "PlayerLeft", "playerRight", "playerBack" }, 400f, level1, this));
             scenes.Add(level1);
 
             // level 2
@@ -66,8 +66,6 @@ namespace TopDownGame.Scripts.Assignment2
             level2.Add(new Sword(new Vector2(500, _graphics.PreferredBackBufferHeight / 2), "sword2", "font"));
             level2.Add(new Shield(new Vector2(1300, _graphics.PreferredBackBufferHeight / 2), new string[] { "shield2", "shield2back" }, "font"));
             level2.Add(new Bow(new Vector2(_graphics.PreferredBackBufferWidth / 2, 800), "bow", "font", "arrow"));
-            level2.Add(new Player(new Vector2(_graphics.PreferredBackBufferWidth / 2, _graphics.PreferredBackBufferHeight / 2),
-                        new string[] { "player", "PlayerLeft", "playerRight", "playerBack" }, 400f, level2));
             scenes.Add(level2);
 
             // level 3
@@ -76,16 +74,12 @@ namespace TopDownGame.Scripts.Assignment2
             level3.Add(new Gate(new Vector2(_graphics.PreferredBackBufferWidth / 2, 100), new string[] { "gateclosed", "gateopen" }, "font", this));
             level3.Add(new Sword(new Vector2(500, _graphics.PreferredBackBufferHeight / 2), "sword1", "font"));
             level3.Add(new Shield(new Vector2(1300, _graphics.PreferredBackBufferHeight / 2), new string[] { "shield1", "shield1back" }, "font"));
-            level3.Add(new Player(new Vector2(_graphics.PreferredBackBufferWidth / 2, _graphics.PreferredBackBufferHeight / 2),
-                        new string[] { "player", "PlayerLeft", "playerRight", "playerBack" }, 400f, level3));
             scenes.Add(level3);
 
             // level 4
             level4.Add(new Background(new Vector2(_graphics.PreferredBackBufferWidth / 2, _graphics.PreferredBackBufferHeight / 2), "Background"));
             level4.Add(new ButtonMainMenu(new Vector2(_graphics.PreferredBackBufferWidth - 80, 50), "button", "fontSmall", "Menu", this));
             level4.Add(new Gate(new Vector2(_graphics.PreferredBackBufferWidth / 2, 100), new string[] { "gateclosed", "gateopen" }, "font", this));
-            level4.Add(new Player(new Vector2(_graphics.PreferredBackBufferWidth / 2, _graphics.PreferredBackBufferHeight / 2),
-                        new string[] { "player", "PlayerLeft", "playerRight", "playerBack" }, 400f, level4));
             scenes.Add(level4);
 
             // level 5
@@ -93,17 +87,19 @@ namespace TopDownGame.Scripts.Assignment2
             level5.Add(new ButtonMainMenu(new Vector2(_graphics.PreferredBackBufferWidth - 80, 50), "button", "fontSmall", "Menu", this));
             level5.Add(new Gate(new Vector2(_graphics.PreferredBackBufferWidth / 2, 100), new string[] { "gateclosed", "gateopen" }, "font", this));
             level5.Add(new Bow(new Vector2(_graphics.PreferredBackBufferWidth / 2, 800), "bow", "font", "arrow"));
-            level5.Add(new Player(new Vector2(_graphics.PreferredBackBufferWidth / 2, _graphics.PreferredBackBufferHeight / 2),
-                        new string[] { "player", "PlayerLeft", "playerRight", "playerBack" }, 400f, level5));
             scenes.Add(level5);
         }
 
         protected override void Initialize()
         {
             // call initialize for all scripts
-            for (int i = 0; i < scenes[(int)gameState].Count; i++)
+            for (int i = 0; i < scenes.Count; i++)
             {
-                scenes[(int)gameState][i].Initialize(_graphics);
+                for (int j = 0; j < scenes[i].Count; j++)
+                {
+                    scenes[i][j].Initialize(_graphics);
+                }
+                
             }
             base.Initialize();
         }
@@ -113,10 +109,15 @@ namespace TopDownGame.Scripts.Assignment2
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
             // call loade content for all scripts
-            for (int i = 0; i < scenes[(int)gameState].Count; i++)
+            for (int i = 0; i < scenes.Count; i++)
             {
-                scenes[(int)gameState][i].LoadContent(Content, _graphics);
+                for (int j = 0; j < scenes[i].Count; j++)
+                {
+                    scenes[i][j].LoadContent(Content, _graphics);
+                }
+
             }
+            
         }
 
         protected override void Update(GameTime gameTime)
@@ -159,15 +160,6 @@ namespace TopDownGame.Scripts.Assignment2
                 GoToMenu();
                 return;
             }
-
-            for (int i = 0; i < scenes[(int)gameState].Count; i++)
-            {
-                scenes[(int)gameState][i].Initialize(_graphics);
-            }
-            for (int i = 0; i < scenes[(int)gameState].Count; i++)
-            {
-                scenes[(int)gameState][i].LoadContent(Content, _graphics);
-            }
         }
 
         public void GoToMenu()
@@ -178,6 +170,34 @@ namespace TopDownGame.Scripts.Assignment2
         public void Quit()
         {
             Exit();
+        }
+
+        public void HandlePlayerData()
+        {
+            if (gameState == GameStates.MainMenu) return;
+
+            if (player.sword != null)
+            {
+                scenes[(int)gameState].Add(player.sword);
+                scenes[(int)gameState - 1].Remove(player.sword);
+            }
+
+            if (player.shield != null)
+            {
+                scenes[(int)gameState].Add(player.shield);
+                scenes[(int)gameState - 1].Remove(player.shield);
+            }
+
+            if (player.bow != null)
+            {
+                scenes[(int)gameState].Add(player.bow);
+                scenes[(int)gameState - 1].Remove(player.bow);
+            }
+
+            scenes[(int)gameState].Add(player);
+            scenes[(int)gameState - 1].Remove(player);
+            player.gameObjects = scenes[(int)gameState];
+
         }
     }
 }

@@ -13,6 +13,7 @@ namespace TopDownGame.Scripts.Assignment2
         protected internal override void OnClick()
         {
             game1.NextSceneInList();
+            game1.HandlePlayerData();
         }
     }
 }

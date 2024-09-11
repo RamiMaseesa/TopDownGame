@@ -2,27 +2,30 @@
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using System;
 using System.Collections.Generic;
 
 namespace TopDownGame.Scripts.Assignment2
 {
     internal class Player : GameObject
     {
+        public Sword sword;
+        public Shield shield;
+        public Bow bow;
         public Texture2D[] sprites;
+        public List<GameObject> gameObjects;
 
-        private List<GameObject> gameObjects;
+        private Game1 game1;
         private float playerSpeed;
         private string[] paths;
-        private Sword sword;
-        private Shield shield;
-        private Bow bow;
         private KeyboardState privousKstate;
 
-        public Player(Vector2 position, string[] paths, float playerSpeed, List<GameObject> gameObjects) : base(position, paths[0])
+        public Player(Vector2 position, string[] paths, float playerSpeed, List<GameObject> gameObjects, Game1 game1) : base(position, paths[0])
         {
             this.playerSpeed = playerSpeed;
             this.paths = paths;
             this.gameObjects = gameObjects;
+            this.game1 = game1;
         }
 
         protected internal override void Initialize(GraphicsDeviceManager graphics)
@@ -139,23 +142,33 @@ namespace TopDownGame.Scripts.Assignment2
 
         private void Collision(List<GameObject> gameObjects)
         {
-            // loop through all game objects
-            foreach (GameObject gameObject in gameObjects)
+            try
             {
-                // check collision from all objects that inherit from Interactable
-                if (gameObject is Interactable interactable)
+                // Loop through all game objects
+                foreach (GameObject gameObject in gameObjects)
                 {
-                    // if colliding and E is pressed once pick up Interactable
-                    if (interactable.CheckCollisionWithPlayer(this) && kstate.IsKeyDown(Keys.E) && !privousKstate.IsKeyDown(Keys.E))
+                    // Check collision for all objects that inherit from Interactable
+                    if (gameObject is Interactable interactable)
                     {
-                        CheckToSwitchItems(interactable);
-                    }
-                    // if colliding, E is pressed Interactable is a gate
-                    else if (interactable.CheckCollisionWithPlayer(this) && !kstate.IsKeyDown(Keys.E) && privousKstate.IsKeyDown(Keys.E) && interactable is Gate gate)
-                    {
-                        gate.EndGame();
+                        // If colliding and 'E' is pressed once, pick up Interactable
+                        if (interactable.CheckCollisionWithPlayer(this) && kstate.IsKeyDown(Keys.E) && !privousKstate.IsKeyDown(Keys.E))
+                        {
+                            CheckToSwitchItems(interactable);
+                        }
+                        // If colliding, 'E' is pressed Interactable is a gate
+                        else if (interactable.CheckCollisionWithPlayer(this) && !kstate.IsKeyDown(Keys.E) && privousKstate.IsKeyDown(Keys.E) && interactable is Gate gate)
+                        {
+                            gate.EndGame();
+                            game1.HandlePlayerData();
+                        }
                     }
                 }
+            }
+            catch (InvalidOperationException ex)
+            {
+                // Handle the exception (e.g., log it or wait for a moment before retrying)
+                Console.WriteLine("Modification attempted during iteration: " + ex.Message);
+                // Retry after catching the exception, potentially using a delay or waiting mechanism
             }
         }
 
