@@ -83,7 +83,6 @@ namespace TopDownGame.Scripts.Assignment2
             if (buttonStatus == ButtonStatus.Hovered && mState.LeftButton == ButtonState.Released && previousMState.LeftButton == ButtonState.Pressed)
             {
                 buttonStatus = ButtonStatus.Pressed;
-
                 OnClick();
             }
         }
