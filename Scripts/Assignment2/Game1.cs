@@ -195,8 +195,12 @@ namespace TopDownGame.Scripts.Assignment2
             }
 
             scenes[(int)gameState].Add(player);
-            scenes[(int)gameState - 1].Remove(player);
             player.gameObjects = scenes[(int)gameState];
+
+            if (scenes[(int)gameState - 1].Contains(player))
+            {
+                scenes[(int)gameState - 1].Remove(player);
+            }
 
         }
     }
