@@ -4,12 +4,14 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace TopDownGame.Scripts.Assignment2
 {
-    internal class Gate : Interactable
+    internal class GateBase : Interactable
     {
+        protected internal Game1 game1;
+
         private Texture2D[] sprites;
         private string[] paths;
-        private Game1 game1;
-        public Gate(Vector2 position, string[] paths, string fontPath, Game1 game) : base(position, paths[0], fontPath)
+        
+        public GateBase(Vector2 position, string[] paths, string fontPath, Game1 game) : base(position, paths[0], fontPath)
         {
             this.paths = paths;
             this.game1 = game;
@@ -31,9 +33,9 @@ namespace TopDownGame.Scripts.Assignment2
             }
         }
 
-        public void EndGame()
+        protected internal virtual void OnGateEnter()
         {
-            game1.NextSceneInList();
+
         }
 
     }

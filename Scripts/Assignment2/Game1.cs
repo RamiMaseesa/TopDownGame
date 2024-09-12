@@ -22,7 +22,7 @@ namespace TopDownGame.Scripts.Assignment2
         private List<GameObject> level4 = new List<GameObject>();
         private List<GameObject> level5 = new List<GameObject>();
 
-        private GameStates gameState = GameStates.TitleScreen;
+        private GameStates gameState = GameStates.Level1;
         private Player player;
         
         public Game1()
@@ -51,7 +51,7 @@ namespace TopDownGame.Scripts.Assignment2
             // level 1
             level1.Add(new Background(new Vector2(_graphics.PreferredBackBufferWidth / 2, _graphics.PreferredBackBufferHeight / 2), "Background"));
             level1.Add(new ButtonMainMenu(new Vector2(_graphics.PreferredBackBufferWidth - 80, 50), "button", "fontSmall", "Menu", this));
-            level1.Add(new Gate(new Vector2(_graphics.PreferredBackBufferWidth / 2, 100), new string[] { "gateclosed", "gateopen" }, "font", this));
+            level1.Add(new GateNextScene(new Vector2(_graphics.PreferredBackBufferWidth / 2, 100), new string[] { "gateclosed", "gateopen" }, "font", this));
             level1.Add(new Sword(new Vector2(500, _graphics.PreferredBackBufferHeight / 2), "sword1", "font"));
             level1.Add(new Shield(new Vector2(1300, _graphics.PreferredBackBufferHeight / 2), new string[] { "shield1", "shield1back" }, "font"));
             level1.Add(player = new Player(new Vector2(_graphics.PreferredBackBufferWidth / 2, _graphics.PreferredBackBufferHeight / 2),
@@ -61,7 +61,8 @@ namespace TopDownGame.Scripts.Assignment2
             // level 2
             level2.Add(new Background(new Vector2(_graphics.PreferredBackBufferWidth / 2, _graphics.PreferredBackBufferHeight / 2), "Background"));
             level2.Add(new ButtonMainMenu(new Vector2(_graphics.PreferredBackBufferWidth - 80, 50), "button", "fontSmall", "Menu", this));
-            level2.Add(new Gate(new Vector2(_graphics.PreferredBackBufferWidth / 2, 100), new string[] { "gateclosed", "gateopen" }, "font", this));
+            level2.Add(new GatePreviousScene(new Vector2(_graphics.PreferredBackBufferWidth / 2, 100), new string[] { "gateclosed", "gateopen" }, "font", this));
+            level2.Add(new GateNextScene(new Vector2(_graphics.PreferredBackBufferWidth / 2, 900), new string[] { "gateclosed", "gateopen" }, "font", this));
             level2.Add(new Sword(new Vector2(500, _graphics.PreferredBackBufferHeight / 2), "sword2", "font"));
             level2.Add(new Shield(new Vector2(1300, _graphics.PreferredBackBufferHeight / 2), new string[] { "shield2", "shield2back" }, "font"));
             scenes.Add(level2);
@@ -69,7 +70,8 @@ namespace TopDownGame.Scripts.Assignment2
             // level 3
             level3.Add(new Background(new Vector2(_graphics.PreferredBackBufferWidth / 2, _graphics.PreferredBackBufferHeight / 2), "Background"));
             level3.Add(new ButtonMainMenu(new Vector2(_graphics.PreferredBackBufferWidth - 80, 50), "button", "fontSmall", "Menu", this));
-            level3.Add(new Gate(new Vector2(_graphics.PreferredBackBufferWidth / 2, 100), new string[] { "gateclosed", "gateopen" }, "font", this));
+            level3.Add(new GatePreviousScene(new Vector2(_graphics.PreferredBackBufferWidth / 2, 900), new string[] { "gateclosed", "gateopen" }, "font", this));
+            level3.Add(new GateNextScene(new Vector2(_graphics.PreferredBackBufferWidth / 1.2f, 100), new string[] { "gateclosed", "gateopen" }, "font", this));
             level3.Add(new Sword(new Vector2(500, _graphics.PreferredBackBufferHeight / 2), "sword3", "font"));
             level3.Add(new Shield(new Vector2(1300, _graphics.PreferredBackBufferHeight / 2), new string[] { "shield3", "shield3back" }, "font"));
             scenes.Add(level3);
@@ -77,14 +79,15 @@ namespace TopDownGame.Scripts.Assignment2
             // level 4
             level4.Add(new Background(new Vector2(_graphics.PreferredBackBufferWidth / 2, _graphics.PreferredBackBufferHeight / 2), "Background"));
             level4.Add(new ButtonMainMenu(new Vector2(_graphics.PreferredBackBufferWidth - 80, 50), "button", "fontSmall", "Menu", this));
-            level4.Add(new Gate(new Vector2(_graphics.PreferredBackBufferWidth / 2, 100), new string[] { "gateclosed", "gateopen" }, "font", this));
+            level4.Add(new GatePreviousScene(new Vector2(_graphics.PreferredBackBufferWidth / 1.2f, 100), new string[] { "gateclosed", "gateopen" }, "font", this));
+            level4.Add(new GateNextScene(new Vector2(_graphics.PreferredBackBufferWidth / 10, _graphics.PreferredBackBufferHeight / 2), new string[] { "gateclosed", "gateopen" }, "font", this));
             level4.Add(new Bow(new Vector2(_graphics.PreferredBackBufferWidth / 2, 800), "bow", "font", "arrow"));
             scenes.Add(level4);
 
             // level 5
             level5.Add(new Background(new Vector2(_graphics.PreferredBackBufferWidth / 2, _graphics.PreferredBackBufferHeight / 2), "Background"));
             level5.Add(new ButtonMainMenu(new Vector2(_graphics.PreferredBackBufferWidth - 80, 50), "button", "fontSmall", "Menu", this));
-            level5.Add(new Gate(new Vector2(_graphics.PreferredBackBufferWidth / 2, 100), new string[] { "gateclosed", "gateopen" }, "font", this));
+            level5.Add(new GatePreviousScene(new Vector2(_graphics.PreferredBackBufferWidth / 10, _graphics.PreferredBackBufferHeight / 2), new string[] { "gateclosed", "gateopen" }, "font", this));
             scenes.Add(level5);
         }
 
@@ -174,29 +177,40 @@ namespace TopDownGame.Scripts.Assignment2
         {
             if (gameState == GameStates.MainMenu) return;
 
+            List<GameObject> temporaryList = new List<GameObject>();
+
             if (player.sword != null)
             {
                 scenes[(int)gameState].Add(player.sword);
                 scenes[(int)gameState - 1].Remove(player.sword);
+                if (gameState != GameStates.Level5) scenes[(int)gameState + 1].Remove(player.sword);
             }
 
             if (player.shield != null)
             {
                 scenes[(int)gameState].Add(player.shield);
                 scenes[(int)gameState - 1].Remove(player.shield);
+                if (gameState != GameStates.Level5)  scenes[(int)gameState + 1].Remove(player.shield);
             }
 
             if (player.bow != null)
             {
                 scenes[(int)gameState].Add(player.bow);
                 scenes[(int)gameState - 1].Remove(player.bow);
+                if (gameState != GameStates.Level5) scenes[(int)gameState + 1].Remove(player.bow);
             }
 
             if (!scenes[(int)gameState].Contains(player)) scenes[(int)gameState].Add(player);
             player.gameObjects = scenes[(int)gameState];
-
             if (scenes[(int)gameState - 1].Contains(player)) scenes[(int)gameState - 1].Remove(player);
+            if (gameState != GameStates.Level5 && scenes[(int)gameState + 1].Contains(player))
+                scenes[(int)gameState + 1].Remove(player);
 
+        }
+
+        public void PreviousSceneInList()
+        {
+            gameState = (GameStates)(((int)gameState - 1 + Enum.GetValues(typeof(GameStates)).Length) % Enum.GetValues(typeof(GameStates)).Length);
         }
     }
 }

@@ -156,9 +156,9 @@ namespace TopDownGame.Scripts.Assignment2
                             CheckToSwitchItems(interactable);
                         }
                         // If colliding, 'E' is pressed Interactable is a gate
-                        else if (interactable.CheckCollisionWithPlayer(this) && !kstate.IsKeyDown(Keys.E) && privousKstate.IsKeyDown(Keys.E) && interactable is Gate gate)
+                        else if (interactable.CheckCollisionWithPlayer(this) && !kstate.IsKeyDown(Keys.E) && privousKstate.IsKeyDown(Keys.E) && interactable is GateBase gate)
                         {
-                            gate.EndGame();
+                            gate.OnGateEnter();
                             game1.HandlePlayerData();
                         }
                     }
@@ -168,7 +168,6 @@ namespace TopDownGame.Scripts.Assignment2
             {
                 // Handle the exception (e.g., log it or wait for a moment before retrying)
                 Console.WriteLine("Modification attempted during iteration: " + ex.Message);
-                // Retry after catching the exception, potentially using a delay or waiting mechanism
             }
         }
 
