@@ -143,12 +143,11 @@ namespace TopDownGame.Scripts.Assignment2
         private void Collision(List<GameObject> gameObjects)
         {
 
-            List<GameObject> tempList = gameObjects;
-
-            // Loop through all game objects
-            foreach (GameObject gameObject in tempList)
+            // Iterate backward to safely remove items
+            for (int i = gameObjects.Count - 1; i >= 0; i--)
             {
-                // Check collision for all objects that inherit from Interactable
+                GameObject gameObject = gameObjects[i];
+
                 if (gameObject is Interactable interactable)
                 {
                     // If colliding and 'E' is pressed once, pick up Interactable
