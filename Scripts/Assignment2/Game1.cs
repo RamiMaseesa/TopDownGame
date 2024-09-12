@@ -22,7 +22,7 @@ namespace TopDownGame.Scripts.Assignment2
         private List<GameObject> level4 = new List<GameObject>();
         private List<GameObject> level5 = new List<GameObject>();
 
-        private GameStates gameState = GameStates.Level1;
+        private GameStates gameState = GameStates.TitleScreen;
         private Player player;
         
         public Game1()

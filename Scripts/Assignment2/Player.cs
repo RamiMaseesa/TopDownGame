@@ -142,33 +142,29 @@ namespace TopDownGame.Scripts.Assignment2
 
         private void Collision(List<GameObject> gameObjects)
         {
-            try
+
+            List<GameObject> tempList = gameObjects;
+
+            // Loop through all game objects
+            foreach (GameObject gameObject in tempList)
             {
-                // Loop through all game objects
-                foreach (GameObject gameObject in gameObjects)
+                // Check collision for all objects that inherit from Interactable
+                if (gameObject is Interactable interactable)
                 {
-                    // Check collision for all objects that inherit from Interactable
-                    if (gameObject is Interactable interactable)
+                    // If colliding and 'E' is pressed once, pick up Interactable
+                    if (interactable.CheckCollisionWithPlayer(this) && kstate.IsKeyDown(Keys.E) && !privousKstate.IsKeyDown(Keys.E))
                     {
-                        // If colliding and 'E' is pressed once, pick up Interactable
-                        if (interactable.CheckCollisionWithPlayer(this) && kstate.IsKeyDown(Keys.E) && !privousKstate.IsKeyDown(Keys.E))
-                        {
-                            CheckToSwitchItems(interactable);
-                        }
-                        // If colliding, 'E' is pressed Interactable is a gate
-                        else if (interactable.CheckCollisionWithPlayer(this) && !kstate.IsKeyDown(Keys.E) && privousKstate.IsKeyDown(Keys.E) && interactable is GateBase gate)
-                        {
-                            gate.OnGateEnter();
-                            game1.HandlePlayerData();
-                        }
+                        CheckToSwitchItems(interactable);
+                    }
+                    // If colliding, 'E' is pressed Interactable is a gate
+                    else if (interactable.CheckCollisionWithPlayer(this) && !kstate.IsKeyDown(Keys.E) && privousKstate.IsKeyDown(Keys.E) && interactable is GateBase gate)
+                    {
+                        gate.OnGateEnter();
+                        game1.HandlePlayerData();
                     }
                 }
             }
-            catch (InvalidOperationException ex)
-            {
-                // Handle the exception (e.g., log it or wait for a moment before retrying)
-                Console.WriteLine("Modification attempted during iteration: " + ex.Message);
-            }
+
         }
 
     }
