@@ -175,31 +175,19 @@ namespace TopDownGame.Scripts.Assignment2
 
         public void HandlePlayerData()
         {
-            if (gameState == GameStates.MainMenu) return;
+            if (gameState == GameStates.MainMenu || gameState == GameStates.TitleScreen) return;
 
             List<GameObject> temporaryList = new List<GameObject>();
 
-            if (player.sword != null)
-            {
-                scenes[(int)gameState].Add(player.sword);
-                scenes[(int)gameState - 1].Remove(player.sword);
-                if (gameState != GameStates.Level5) scenes[(int)gameState + 1].Remove(player.sword);
-            }
+            // handle item transistoin
+            if (player.sword != null) HandleItemTtransition(player.sword);
 
-            if (player.shield != null)
-            {
-                scenes[(int)gameState].Add(player.shield);
-                scenes[(int)gameState - 1].Remove(player.shield);
-                if (gameState != GameStates.Level5)  scenes[(int)gameState + 1].Remove(player.shield);
-            }
+            if (player.shield != null) HandleItemTtransition(player.shield);
 
-            if (player.bow != null)
-            {
-                scenes[(int)gameState].Add(player.bow);
-                scenes[(int)gameState - 1].Remove(player.bow);
-                if (gameState != GameStates.Level5) scenes[(int)gameState + 1].Remove(player.bow);
-            }
+            if (player.bow != null) HandleItemTtransition(player.bow);
 
+
+            // handle player transistoin
             if (!scenes[(int)gameState].Contains(player)) scenes[(int)gameState].Add(player);
             player.gameObjects = scenes[(int)gameState];
             if (scenes[(int)gameState - 1].Contains(player)) scenes[(int)gameState - 1].Remove(player);
@@ -211,6 +199,13 @@ namespace TopDownGame.Scripts.Assignment2
         public void PreviousSceneInList()
         {
             gameState = (GameStates)(((int)gameState - 1 + Enum.GetValues(typeof(GameStates)).Length) % Enum.GetValues(typeof(GameStates)).Length);
+        }
+
+        private void HandleItemTtransition(GameObject gameObject)
+        {
+            scenes[(int)gameState].Add(gameObject);
+            scenes[(int)gameState - 1].Remove(gameObject);
+            if (gameState != GameStates.Level5) scenes[(int)gameState + 1].Remove(gameObject);
         }
     }
 }
