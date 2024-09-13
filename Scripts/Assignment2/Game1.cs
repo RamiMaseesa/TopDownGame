@@ -173,12 +173,6 @@ namespace TopDownGame.Scripts.Assignment2
         public void NextSceneInList()
         {
             gameState = (GameStates)(((int)gameState + 1) % Enum.GetValues(typeof(GameStates)).Length);
-
-            if (gameState == GameStates.TitleScreen)
-            {
-                GoToMenu();
-                return;
-            }
         }
 
         public void GoToMenu()
