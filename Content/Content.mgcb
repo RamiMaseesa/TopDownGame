@@ -85,6 +85,13 @@
 /processorParam:TextureFormat=Color
 /build:Sprites/background.png
 
+#begin Sprites/BasicFont.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:PremultiplyAlpha=True
+/processorParam:TextureFormat=Compressed
+/build:Sprites/BasicFont.spritefont
+
 #begin Sprites/bow.png
 /importer:TextureImporter
 /processor:TextureProcessor

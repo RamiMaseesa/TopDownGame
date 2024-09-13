@@ -40,6 +40,19 @@ namespace TopDownGame.Scripts.Assignment2
             // title screen
             titleScreen.Add(new Background(new Vector2(_graphics.PreferredBackBufferWidth / 2, _graphics.PreferredBackBufferHeight / 2), "Background"));
             titleScreen.Add(new ButtonNextScene(new Vector2(_graphics.PreferredBackBufferWidth / 2, 400), "button", "fontSmall", "Start", this));
+            titleScreen.Add(new Sword(new Vector2(_graphics.PreferredBackBufferWidth / 1.5f, _graphics.PreferredBackBufferHeight / 2 + 200), "sword1", "font"));
+            titleScreen.Add(new Shield(new Vector2(_graphics.PreferredBackBufferWidth / 1.5f, _graphics.PreferredBackBufferHeight / 2), new string[] { "shield1", "shield1back" }, "font"));
+            titleScreen.Add(new Sword(new Vector2(_graphics.PreferredBackBufferWidth / 1.5f + 200, _graphics.PreferredBackBufferHeight / 2 + 200), "sword2", "font"));
+            titleScreen.Add(new Shield(new Vector2(_graphics.PreferredBackBufferWidth / 1.5f + 200, _graphics.PreferredBackBufferHeight / 2), new string[] { "shield2", "shield2back" }, "font"));
+            titleScreen.Add(new Sword(new Vector2(_graphics.PreferredBackBufferWidth / 1.5f + 400, _graphics.PreferredBackBufferHeight / 2 + 200), "sword3", "font"));
+            titleScreen.Add(new Shield(new Vector2(_graphics.PreferredBackBufferWidth / 1.5f + 400, _graphics.PreferredBackBufferHeight / 2), new string[] { "shield3", "shield3back" }, "font"));
+            titleScreen.Add(new Bow(new Vector2(_graphics.PreferredBackBufferWidth / 2, _graphics.PreferredBackBufferHeight / 1.2f), "bow", "font", "arrow"));
+
+            titleScreen.Add(new Text(new Vector2(_graphics.PreferredBackBufferWidth / 5, _graphics.PreferredBackBufferHeight / 3f), "BasicFont", 1f, Color.White, "W A S D to walk"));
+            titleScreen.Add(new Text(new Vector2(_graphics.PreferredBackBufferWidth / 2, _graphics.PreferredBackBufferHeight / 1.5f), "BasicFont", 1f, Color.White, "Space to fire bow"));
+            titleScreen.Add(new Text(new Vector2(_graphics.PreferredBackBufferWidth / 1.5f + 200, _graphics.PreferredBackBufferHeight / 3), "BasicFont", 1f, Color.White, "E to pick up items"));
+            titleScreen.Add(new Player(new Vector2(_graphics.PreferredBackBufferWidth / 5, _graphics.PreferredBackBufferHeight / 2),
+                             new string[] { "player", "PlayerLeft", "playerRight", "playerBack" }, 400f, titleScreen, this));
             scenes.Add(titleScreen);
 
             // main menu

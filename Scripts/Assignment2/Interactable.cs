@@ -19,6 +19,7 @@ namespace TopDownGame.Scripts.Assignment2
 
         public Interactable(Vector2 position, string path, string fontPath) : base(position, path)
         {
+
             this.fontPath = fontPath;
         }
 
