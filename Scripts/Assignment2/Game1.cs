@@ -29,7 +29,7 @@ namespace TopDownGame.Scripts.Assignment2
 
         private GameStates gameState = GameStates.TitleScreen;
         private Player player;
-        
+
         public Game1()
         {
             // game settings
@@ -118,7 +118,7 @@ namespace TopDownGame.Scripts.Assignment2
                 {
                     scenes[i][j].Initialize(_graphics);
                 }
-                
+
             }
             base.Initialize();
         }
@@ -136,7 +136,7 @@ namespace TopDownGame.Scripts.Assignment2
                 }
 
             }
-            
+
         }
 
         protected override void Update(GameTime gameTime)
