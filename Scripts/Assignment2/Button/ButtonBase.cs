@@ -90,7 +90,7 @@ namespace TopDownGame.Scripts.Assignment2.Button
 
         protected internal virtual void OnClick()
         {
-
+            // this will be filled in child buttons
         }
     }
 }

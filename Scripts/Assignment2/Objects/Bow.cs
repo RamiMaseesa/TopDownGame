@@ -89,7 +89,7 @@ namespace TopDownGame.Scripts.Assignment2.Objects
         {
             if (player == null) return;
 
-            time += deltaTime ;
+            time += deltaTime;
 
             // only shoot arrows if player is not null and space is pressed once
             if (kstate.IsKeyDown(Keys.Space) && previousKState != kstate && time > fireinterval)
