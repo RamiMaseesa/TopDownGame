@@ -64,7 +64,7 @@ namespace TopDownGame.Scripts.Assignment2.Objects
                 return;
             }
 
-            // change pos, depth and sprite to correct values;
+            // change pos and depth to correct values;
             if (player.sprite == player.sprites[3])
             {
                 position = player.position;
