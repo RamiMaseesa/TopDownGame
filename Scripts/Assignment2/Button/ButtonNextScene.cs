@@ -1,6 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 
-namespace TopDownGame.Scripts.Assignment2
+namespace TopDownGame.Scripts.Assignment2.Button
 {
     internal class ButtonNextScene : ButtonBase
     {

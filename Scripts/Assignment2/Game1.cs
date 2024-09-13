@@ -4,6 +4,11 @@ using Microsoft.Xna.Framework.Input;
 using System;
 using System.Collections.Generic;
 
+using TopDownGame.Scripts.Assignment2.Gate;
+using TopDownGame.Scripts.Assignment2.Button;
+using TopDownGame.Scripts.Assignment2.Objects;
+using TopDownGame.Scripts.Assignment2.HelperClass;
+
 namespace TopDownGame.Scripts.Assignment2
 {
     public class Game1 : Game

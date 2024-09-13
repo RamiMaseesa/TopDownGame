@@ -1,8 +1,9 @@
 ﻿using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using TopDownGame.Scripts.Assignment2.HelperClass;
 
-namespace TopDownGame.Scripts.Assignment2
+namespace TopDownGame.Scripts.Assignment2.Gate
 {
     internal class GateBase : Interactable
     {
@@ -10,11 +11,11 @@ namespace TopDownGame.Scripts.Assignment2
 
         private Texture2D[] sprites;
         private string[] paths;
-        
+
         public GateBase(Vector2 position, string[] paths, string fontPath, Game1 game) : base(position, paths[0], fontPath)
         {
             this.paths = paths;
-            this.game1 = game;
+            game1 = game;
         }
 
         protected internal override void Initialize(GraphicsDeviceManager graphics)

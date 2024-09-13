@@ -2,8 +2,9 @@
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using TopDownGame.Scripts.Assignment2.HelperClass;
 
-namespace TopDownGame.Scripts.Assignment2
+namespace TopDownGame.Scripts.Assignment2.Button
 {
     internal class ButtonBase : GameObject
     {
@@ -18,7 +19,7 @@ namespace TopDownGame.Scripts.Assignment2
         private MouseState mState;
         private MouseState previousMState;
         private SpriteFont font;
-        
+
         public ButtonBase(Vector2 position, string path, string fontPath, string text, Game1 game1) : base(position, path)
         {
             this.fontPath = fontPath;
@@ -87,8 +88,9 @@ namespace TopDownGame.Scripts.Assignment2
             }
         }
 
-        protected internal virtual void OnClick() { 
-            
+        protected internal virtual void OnClick()
+        {
+
         }
     }
 }

@@ -2,8 +2,9 @@
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using TopDownGame.Scripts.Assignment2.Objects;
 
-namespace TopDownGame.Scripts.Assignment2
+namespace TopDownGame.Scripts.Assignment2.HelperClass
 {
     internal class Interactable : GameObject
     {

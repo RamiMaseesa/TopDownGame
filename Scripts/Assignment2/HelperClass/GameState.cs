@@ -1,4 +1,4 @@
-﻿namespace TopDownGame.Scripts.Assignment2
+﻿namespace TopDownGame.Scripts.Assignment2.HelperClass
 {
     internal enum GameStates
     {

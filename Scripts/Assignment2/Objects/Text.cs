@@ -1,18 +1,18 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
+using TopDownGame.Scripts.Assignment2.HelperClass;
 
-namespace TopDownGame.Scripts.Assignment2
+namespace TopDownGame.Scripts.Assignment2.Objects
 {
     internal class Text : GameObject
     {
 
         private SpriteFont font;
         private string fontPath;
-        public string text;
-        public int offset;
-
+        private string text;
         private Vector2 textSize;
+
         public Text(Vector2 position, string fontPath, float depth, Color color, string text) : base(position, fontPath, depth, color)
         {
             this.position = position;
@@ -24,7 +24,7 @@ namespace TopDownGame.Scripts.Assignment2
 
         protected internal override void Initialize(GraphicsDeviceManager graphics)
         {
-            
+
         }
         protected internal override void LoadContent(ContentManager content, GraphicsDeviceManager graphics)
         {
@@ -33,7 +33,7 @@ namespace TopDownGame.Scripts.Assignment2
         }
         protected internal override void Update(GameTime gameTime, GraphicsDeviceManager graphics)
         {
-            
+
         }
         protected internal override void Draw(SpriteBatch spriteBatch)
         {

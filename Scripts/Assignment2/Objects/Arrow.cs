@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
+using TopDownGame.Scripts.Assignment2.HelperClass;
 
-namespace TopDownGame.Scripts.Assignment2
+namespace TopDownGame.Scripts.Assignment2.Objects
 {
     internal class Arrow : GameObject
     {
@@ -10,7 +11,7 @@ namespace TopDownGame.Scripts.Assignment2
         private Bow bow;
         public Arrow(string path, Player player, Bow bow) : base(player.position, path)
         {
-            this.Player = player;
+            Player = player;
             this.bow = bow;
         }
 
