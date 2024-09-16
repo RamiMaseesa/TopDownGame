@@ -1,3 +1,3 @@
 ﻿
-using var game = new TopDownGame.Scripts.Assignment2.Game1();
+using var game = new TopDownGame.Scripts.Assignment3.Game1();
 game.Run();
