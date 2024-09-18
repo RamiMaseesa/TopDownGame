@@ -8,7 +8,7 @@ namespace TopDownGame.Scripts.Assignment3.Button
 {
     internal class ButtonBase : GameObject
     {
-        protected internal Game1 game1;
+        protected internal SceneManager sceneManager;
         protected internal ButtonStatus buttonStatus;
 
         private string fontPath;
@@ -20,11 +20,11 @@ namespace TopDownGame.Scripts.Assignment3.Button
         private MouseState previousMState;
         private SpriteFont font;
 
-        public ButtonBase(Vector2 position, string path, string fontPath, string text, Game1 game1) : base(position, path)
+        public ButtonBase(Vector2 position, string path, string fontPath, string text, SceneManager sceneManager) : base(position, path)
         {
             this.fontPath = fontPath;
             this.text = text;
-            this.game1 = game1;
+            this.sceneManager = sceneManager;
         }
 
         protected internal override void Initialize(GraphicsDeviceManager graphics)

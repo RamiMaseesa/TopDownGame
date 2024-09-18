@@ -7,15 +7,15 @@ namespace TopDownGame.Scripts.Assignment3.Gate
 {
     internal class GateBase : Interactable
     {
-        protected internal Game1 game1;
+        protected internal SceneManager sceneManager;
 
         private Texture2D[] sprites;
         private string[] paths;
 
-        public GateBase(Vector2 position, string[] paths, string fontPath, Game1 game) : base(position, paths[0], fontPath)
+        public GateBase(Vector2 position, string[] paths, string fontPath, SceneManager sceneManager) : base(position, paths[0], fontPath)
         {
             this.paths = paths;
-            game1 = game;
+            this.sceneManager = sceneManager;
         }
 
         protected internal override void Initialize(GraphicsDeviceManager graphics)

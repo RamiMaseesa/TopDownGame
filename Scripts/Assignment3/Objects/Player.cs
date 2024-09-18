@@ -16,17 +16,17 @@ namespace TopDownGame.Scripts.Assignment3.Objects
         public Texture2D[] sprites;
         public List<GameObject> gameObjects;
 
-        private Game1 game1;
+        private SceneManager sceneManager;
         private float playerSpeed;
         private string[] paths;
         private KeyboardState privousKstate;
 
-        public Player(Vector2 position, string[] paths, float playerSpeed, List<GameObject> gameObjects, Game1 game1) : base(position, paths[0])
+        public Player(Vector2 position, string[] paths, float playerSpeed, List<GameObject> gameObjects, SceneManager sceneManager) : base(position, paths[0])
         {
             this.playerSpeed = playerSpeed;
             this.paths = paths;
             this.gameObjects = gameObjects;
-            this.game1 = game1;
+            this.sceneManager = sceneManager;
         }
 
         protected internal override void Initialize(GraphicsDeviceManager graphics)
@@ -160,7 +160,7 @@ namespace TopDownGame.Scripts.Assignment3.Objects
                     else if (interactable.CheckCollisionWithPlayer(this) && !kstate.IsKeyDown(Keys.E) && privousKstate.IsKeyDown(Keys.E) && interactable is GateBase gate)
                     {
                         gate.OnGateEnter();
-                        game1.HandlePlayerData();
+                        sceneManager.HandlePlayerData();
                     }
                 }
             }

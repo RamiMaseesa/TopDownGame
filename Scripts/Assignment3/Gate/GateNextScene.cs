@@ -1,17 +1,18 @@
 ﻿using Microsoft.Xna.Framework;
+using TopDownGame.Scripts.Assignment3.HelperClass;
 
 namespace TopDownGame.Scripts.Assignment3.Gate
 {
     internal class GateNextScene : GateBase
     {
-        public GateNextScene(Vector2 position, string[] paths, string fontPath, Game1 game) : base(position, paths, fontPath, game)
+        public GateNextScene(Vector2 position, string[] paths, string fontPath, SceneManager sceneManager) : base(position, paths, fontPath, sceneManager)
         {
             path = paths[0];
         }
 
         protected internal override void OnGateEnter()
         {
-            game1.NextSceneInList();
+            sceneManager.NextSceneInList();
         }
     }
 }
