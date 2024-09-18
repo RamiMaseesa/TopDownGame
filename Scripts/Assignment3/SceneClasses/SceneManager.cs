@@ -7,11 +7,13 @@ using System.Collections.Generic;
 using TopDownGame.Scripts.Assignment3.Objects;
 using TopDownGame.Scripts.Assignment3.Button;
 using TopDownGame.Scripts.Assignment3.Gate;
+using TopDownGame.Scripts.Assignment3.HelperClass;
 
-namespace TopDownGame.Scripts.Assignment3.HelperClass
+namespace TopDownGame.Scripts.Assignment3.SceneClasses
 {
     internal class SceneManager
     {
+        private List<GameObject> loseScreen = new List<GameObject>();
         private List<GameObject> titleScreen = new List<GameObject>();
         private List<GameObject> mainMenu = new List<GameObject>();
         private List<GameObject> level1 = new List<GameObject>();
@@ -19,9 +21,11 @@ namespace TopDownGame.Scripts.Assignment3.HelperClass
         private List<GameObject> level3 = new List<GameObject>();
         private List<GameObject> level4 = new List<GameObject>();
         private List<GameObject> level5 = new List<GameObject>();
+        private List<GameObject> winScreen = new List<GameObject>();
+
 
         private Dictionary<int, List<GameObject>> scenes;
-        private GameStates gameState;
+        private GameStates gameState = GameStates.TitleScreen;
         private Player player;
         private Game1 game1;
 
@@ -31,9 +35,15 @@ namespace TopDownGame.Scripts.Assignment3.HelperClass
 
             this.game1 = game1;
 
+            // lose screen
+            loseScreen.Add(new Background(new Vector2(_graphics.PreferredBackBufferWidth / 2, _graphics.PreferredBackBufferHeight / 2), "Background"));
+            scenes.Add((int)GameStates.LoseScreen, loseScreen);
+
+
             // title screen
             titleScreen.Add(new Background(new Vector2(_graphics.PreferredBackBufferWidth / 2, _graphics.PreferredBackBufferHeight / 2), "Background"));
             titleScreen.Add(new ButtonNextScene(new Vector2(_graphics.PreferredBackBufferWidth / 2, 400), "button", "fontSmall", "Start", this));
+            
             titleScreen.Add(new Sword(new Vector2(_graphics.PreferredBackBufferWidth / 1.5f, _graphics.PreferredBackBufferHeight / 2 + 200), "sword1", "font"));
             titleScreen.Add(new Shield(new Vector2(_graphics.PreferredBackBufferWidth / 1.5f, _graphics.PreferredBackBufferHeight / 2), new string[] { "shield1", "shield1back" }, "font"));
             titleScreen.Add(new Sword(new Vector2(_graphics.PreferredBackBufferWidth / 1.5f + 200, _graphics.PreferredBackBufferHeight / 2 + 200), "sword2", "font"));
@@ -41,7 +51,11 @@ namespace TopDownGame.Scripts.Assignment3.HelperClass
             titleScreen.Add(new Sword(new Vector2(_graphics.PreferredBackBufferWidth / 1.5f + 400, _graphics.PreferredBackBufferHeight / 2 + 200), "sword3", "font"));
             titleScreen.Add(new Shield(new Vector2(_graphics.PreferredBackBufferWidth / 1.5f + 400, _graphics.PreferredBackBufferHeight / 2), new string[] { "shield3", "shield3back" }, "font"));
             titleScreen.Add(new Bow(new Vector2(_graphics.PreferredBackBufferWidth / 2, _graphics.PreferredBackBufferHeight / 1.2f), "bow", "font", "arrow"));
-            titleScreen.Add(new Text(new Vector2(_graphics.PreferredBackBufferWidth / 5, _graphics.PreferredBackBufferHeight / 3f), "BasicFont", 1f, Color.White, "W A S D to walk"));
+            titleScreen.Add(new GateNextScene(new Vector2(_graphics.PreferredBackBufferWidth / 1.5f, _graphics.PreferredBackBufferHeight / 4), new string[] { "gateclosed", "gateopen" }, "font", this));
+            titleScreen.Add(new Enemy(new Vector2(_graphics.PreferredBackBufferWidth / 3, _graphics.PreferredBackBufferHeight / 4), new string[] { "enemy", "enemyLeft", "enemyRight", "enemyBack" }, 300f));
+            
+            titleScreen.Add(new Text(new Vector2(_graphics.PreferredBackBufferWidth / 2, _graphics.PreferredBackBufferHeight / 30), "BasicFont", 1f, Color.White, "Kill all bad guys to open gate"));
+            titleScreen.Add(new Text(new Vector2(_graphics.PreferredBackBufferWidth / 5, _graphics.PreferredBackBufferHeight / 3), "BasicFont", 1f, Color.White, "W A S D to walk"));
             titleScreen.Add(new Text(new Vector2(_graphics.PreferredBackBufferWidth / 2, _graphics.PreferredBackBufferHeight / 1.5f), "BasicFont", 1f, Color.White, "Space to fire bow"));
             titleScreen.Add(new Text(new Vector2(_graphics.PreferredBackBufferWidth / 1.5f + 200, _graphics.PreferredBackBufferHeight / 3), "BasicFont", 1f, Color.White, "E to pick up items"));
             titleScreen.Add(new Player(new Vector2(_graphics.PreferredBackBufferWidth / 5, _graphics.PreferredBackBufferHeight / 2),
@@ -101,6 +115,11 @@ namespace TopDownGame.Scripts.Assignment3.HelperClass
             level5.Add(new ButtonMainMenu(new Vector2(_graphics.PreferredBackBufferWidth - 80, 50), "button", "fontSmall", "Menu", this));
             level5.Add(new GatePreviousScene(new Vector2(_graphics.PreferredBackBufferWidth / 10, _graphics.PreferredBackBufferHeight / 2), new string[] { "gateclosed", "gateopen" }, "font", this));
             scenes.Add((int)GameStates.Level5, level5);
+
+
+            // win Screen
+            winScreen.Add(new Background(new Vector2(_graphics.PreferredBackBufferWidth / 2, _graphics.PreferredBackBufferHeight / 2), "Background"));
+            scenes.Add((int)GameStates.WinScreen, winScreen);
         }
 
         public List<GameObject> RetrunCurrentScene(GameStates currentGameState)

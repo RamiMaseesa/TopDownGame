@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using TopDownGame.Scripts.Assignment3.HelperClass;
+using TopDownGame.Scripts.Assignment3.SceneClasses;
 
 namespace TopDownGame.Scripts.Assignment3.Button
 {

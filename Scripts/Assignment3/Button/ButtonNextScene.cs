@@ -1,5 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
-using TopDownGame.Scripts.Assignment3.HelperClass;
+using TopDownGame.Scripts.Assignment3.SceneClasses;
 
 namespace TopDownGame.Scripts.Assignment3.Button
 {

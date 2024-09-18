@@ -19,7 +19,7 @@ namespace TopDownGame.Scripts.Assignment3.Objects
         {
             base.Initialize(graphics);
 
-            arrowSpeed = 500f;
+            arrowSpeed = 1500f;
 
             if (Player.sprite == Player.sprites[1])
             {
@@ -48,7 +48,7 @@ namespace TopDownGame.Scripts.Assignment3.Objects
             HandleArrowMovement();
             HandleOutOfBounds();
         }
-
+         
         private void HandleArrowMovement()
         {
             position += moveDir * arrowSpeed * deltaTime;
