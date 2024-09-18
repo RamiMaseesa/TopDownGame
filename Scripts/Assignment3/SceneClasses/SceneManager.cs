@@ -24,8 +24,9 @@ namespace TopDownGame.Scripts.Assignment3.SceneClasses
         private List<GameObject> winScreen = new List<GameObject>();
 
 
-        private Dictionary<int, List<GameObject>> scenes;
-        private GameStates gameState = GameStates.TitleScreen;
+        public Dictionary<int, List<GameObject>> scenes;
+        public GameStates gameState = GameStates.TitleScreen;
+
         private Player player;
         private Game1 game1;
 
