@@ -17,10 +17,14 @@ namespace TopDownGame.Scripts.Assignment3.Objects
         public Texture2D[] sprites;
         public List<GameObject> gameObjects;
 
-        private SceneManager sceneManager;
+        private bool hit;
+        private int health;
+        private float time;
+        private float timeInterval;
         private float playerSpeed;
         private string[] paths;
         private KeyboardState privousKstate;
+        private SceneManager sceneManager;
 
         public Player(Vector2 position, string[] paths, float playerSpeed, List<GameObject> gameObjects, SceneManager sceneManager) : base(position, paths[0])
         {
@@ -41,6 +45,10 @@ namespace TopDownGame.Scripts.Assignment3.Objects
             sword = null;
             shield = null;
             bow = null;
+            health = 3;
+            time = 0;
+            timeInterval = .15f;
+            hit = false;
         }
 
         protected internal override void LoadContent(ContentManager content, GraphicsDeviceManager graphics)
@@ -60,6 +68,7 @@ namespace TopDownGame.Scripts.Assignment3.Objects
 
             MoveMent(kState, gameTime);
             Collision(gameObjects);
+            AfterHit();
 
             privousKstate = kState;
         }
@@ -164,8 +173,40 @@ namespace TopDownGame.Scripts.Assignment3.Objects
                         sceneManager.HandlePlayerData();
                     }
                 }
+                else if (gameObject is Enemy enemy && collider.Intersects(enemy.collider) && !hit)
+                {
+                    OnHit();
+                }
             }
 
+        }
+
+        private void OnHit()
+        {
+            health--;
+
+            if (health <= 0) sceneManager.GoToLoseScreen();
+
+            color = Color.Red;
+            hit = true;
+
+        }
+
+        private void AfterHit()
+        {
+            if (!hit) return;
+            time += deltaTime;
+
+            if (time > timeInterval)
+            {
+                color = Color.White;
+            }
+
+            if (time > 1f)
+            {
+                time = 0;
+                hit = false;
+            }
         }
 
     }

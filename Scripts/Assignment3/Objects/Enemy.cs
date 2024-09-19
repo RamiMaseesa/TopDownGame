@@ -60,12 +60,16 @@ namespace TopDownGame.Scripts.Assignment3.Objects
 
         }
 
-        public void OnHit()
+        public bool OnHit()
         {
             enemyHealth--;
 
+            if (enemyHealth <= 0) return true; 
+
             color = Color.Red; 
             hit = true;
+
+            return false;
         }
 
         private void AfterHit()

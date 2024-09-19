@@ -215,5 +215,10 @@ namespace TopDownGame.Scripts.Assignment3.SceneClasses
             scenes[(int)gameState - 1].Remove(gameObject);
             if (gameState != GameStates.Level5) scenes[(int)gameState + 1].Remove(gameObject);
         }
+
+        public void GoToLoseScreen()
+        {
+            gameState = GameStates.LoseScreen;
+        }
     }
 }
