@@ -1,10 +1,12 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Reflection.Metadata;
 using System.Text;
 using System.Threading.Tasks;
 using TopDownGame.Scripts.Assignment3.HelperClass;
@@ -13,6 +15,11 @@ namespace TopDownGame.Scripts.Assignment3.Objects
 {
     internal class Enemy : GameObject
     {
+        public int enemyHealth;
+
+        private bool hit;
+        private float afterHitInterval;
+        private float time;
         private float enemySpeed;
         private Texture2D[] sprites;
         private string[] paths;
@@ -29,6 +36,10 @@ namespace TopDownGame.Scripts.Assignment3.Objects
 
             sprites = new Texture2D[4];
             depth = 0.5f;
+            enemyHealth = 3;
+            time = 0;
+            afterHitInterval = .15f;
+            hit = true;
         }
 
         protected internal override void LoadContent(ContentManager content, GraphicsDeviceManager graphics)
@@ -39,14 +50,36 @@ namespace TopDownGame.Scripts.Assignment3.Objects
             {
                 sprites[i] = content.Load<Texture2D>(paths[i]);
             }
-
         }
 
         protected internal override void Update(GameTime gameTime, GraphicsDeviceManager graphics)
         {
             base.Update(gameTime, graphics);
 
-            // add enemy behaviour
+            AfterHit();
+
         }
+
+        public void OnHit()
+        {
+            enemyHealth--;
+
+            color = Color.Red; 
+            hit = true;
+        }
+
+        private void AfterHit()
+        {
+            if (!hit) return;
+            time += deltaTime;
+
+            if (time > afterHitInterval)
+            {
+                color = Color.White;
+                time = 0;
+                hit = false;
+            }
+        }
+
     }
 }

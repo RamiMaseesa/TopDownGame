@@ -16,7 +16,7 @@ namespace TopDownGame.Scripts.Assignment3.Objects
         private KeyboardState previousKState;
 
         private float time;
-        private float fireinterval;
+        private float fireInterval;
 
         public Bow(Vector2 position, string path, string fontPath, string arrowPath) : base(position, path, fontPath)
         {
@@ -28,7 +28,7 @@ namespace TopDownGame.Scripts.Assignment3.Objects
             base.Initialize(graphics);
             arrows = new List<Arrow>();
             time = 1;
-            fireinterval = 1;
+            fireInterval = 1;
         }
 
         protected internal override void LoadContent(ContentManager content, GraphicsDeviceManager graphics)
@@ -43,7 +43,7 @@ namespace TopDownGame.Scripts.Assignment3.Objects
 
             HandleBowData();
             FireArrows(graphics, content);
-            previousKState = kstate;
+            previousKState = kState;
 
             for (int i = 0; i < arrows.Count; i++)
             {
@@ -92,7 +92,7 @@ namespace TopDownGame.Scripts.Assignment3.Objects
             time += deltaTime;
 
             // only shoot arrows if player is not null and space is pressed once
-            if (kstate.IsKeyDown(Keys.Space) && previousKState != kstate && time > fireinterval)
+            if (kState.IsKeyDown(Keys.Space) && previousKState != kState && time > fireInterval)
             {
                 Arrow newArrow;
                 arrows.Add(newArrow = new Arrow(arrowPath, player, this));

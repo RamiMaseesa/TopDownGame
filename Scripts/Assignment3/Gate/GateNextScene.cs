@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using TopDownGame.Scripts.Assignment3.HelperClass;
 using TopDownGame.Scripts.Assignment3.Objects;
 using TopDownGame.Scripts.Assignment3.SceneClasses;
 
@@ -14,7 +15,9 @@ namespace TopDownGame.Scripts.Assignment3.Gate
 
         protected internal override void OnGateEnter()
         {
-            foreach (var obj in sceneManager.scenes[(int)sceneManager.gameState])
+            noEnemies = true;
+
+            foreach (GameObject obj in sceneManager.scenes[(int)sceneManager.gameState])
             {
                 if (obj is Enemy)
                 {
@@ -26,8 +29,6 @@ namespace TopDownGame.Scripts.Assignment3.Gate
             {
                 sceneManager.NextSceneInList();
             }
-            
-            noEnemies = true;
         }
     }
 }

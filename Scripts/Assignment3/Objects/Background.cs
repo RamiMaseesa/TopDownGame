@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using TopDownGame.Scripts.Assignment3.HelperClass;
 
 namespace TopDownGame.Scripts.Assignment3.Objects
@@ -13,7 +14,6 @@ namespace TopDownGame.Scripts.Assignment3.Objects
         protected internal override void Initialize(GraphicsDeviceManager graphics)
         {
             base.Initialize(graphics);
-            // update color of back ground
             color = new Color(100, 130, 100, 155);
         }
     }

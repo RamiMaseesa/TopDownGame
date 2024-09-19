@@ -16,7 +16,7 @@ namespace TopDownGame.Scripts.Assignment3.HelperClass
         protected internal Color color;
         protected internal Texture2D sprite;
 
-        protected KeyboardState kstate;
+        protected KeyboardState kState;
         public GameObject(Vector2 position, string path)
         {
             this.position = position;
@@ -43,7 +43,7 @@ namespace TopDownGame.Scripts.Assignment3.HelperClass
         }
         protected internal virtual void Update(GameTime gameTime, GraphicsDeviceManager graphics)
         {
-            kstate = Keyboard.GetState();
+            kState = Keyboard.GetState();
             collider = new Rectangle((int)position.X, (int)position.Y, sprite.Width, sprite.Height);
             deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
         }

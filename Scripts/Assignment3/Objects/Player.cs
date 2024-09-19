@@ -58,10 +58,10 @@ namespace TopDownGame.Scripts.Assignment3.Objects
         {
             base.Update(gameTime, graphics);
 
-            MoveMent(kstate, gameTime);
+            MoveMent(kState, gameTime);
             Collision(gameObjects);
 
-            privousKstate = kstate;
+            privousKstate = kState;
         }
 
         protected internal virtual void CheckToSwitchItems(Interactable inter)
@@ -111,22 +111,22 @@ namespace TopDownGame.Scripts.Assignment3.Objects
             Vector2 movement = Vector2.Zero;
 
             // check which pos the player is going and update the sprites if possible
-            if (kstate.IsKeyDown(Keys.A))
+            if (base.kState.IsKeyDown(Keys.A))
             {
                 movement.X -= 1;
                 if (paths.Length > 1) sprite = sprites[1];
             }
-            if (kstate.IsKeyDown(Keys.D))
+            if (base.kState.IsKeyDown(Keys.D))
             {
                 movement.X += 1;
                 if (paths.Length > 1) sprite = sprites[2];
             }
-            if (kstate.IsKeyDown(Keys.W))
+            if (base.kState.IsKeyDown(Keys.W))
             {
                 movement.Y -= 1;
                 if (paths.Length > 1) sprite = sprites[3];
             }
-            if (kstate.IsKeyDown(Keys.S))
+            if (base.kState.IsKeyDown(Keys.S))
             {
                 movement.Y += 1;
                 if (paths.Length > 1) sprite = sprites[0];
@@ -153,12 +153,12 @@ namespace TopDownGame.Scripts.Assignment3.Objects
                 if (gameObject is Interactable interactable)
                 {
                     // If colliding and 'E' is pressed once, pick up Interactable
-                    if (interactable.CheckCollisionWithPlayer(this) && kstate.IsKeyDown(Keys.E) && !privousKstate.IsKeyDown(Keys.E))
+                    if (interactable.CheckCollisionWithPlayer(this) && kState.IsKeyDown(Keys.E) && !privousKstate.IsKeyDown(Keys.E))
                     {
                         CheckToSwitchItems(interactable);
                     }
                     // If colliding, 'E' is pressed Interactable is a gate
-                    else if (interactable.CheckCollisionWithPlayer(this) && !kstate.IsKeyDown(Keys.E) && privousKstate.IsKeyDown(Keys.E) && interactable is GateBase gate)
+                    else if (interactable.CheckCollisionWithPlayer(this) && !kState.IsKeyDown(Keys.E) && privousKstate.IsKeyDown(Keys.E) && interactable is GateBase gate)
                     {
                         gate.OnGateEnter();
                         sceneManager.HandlePlayerData();

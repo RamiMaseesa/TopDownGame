@@ -43,7 +43,7 @@ namespace TopDownGame.Scripts.Assignment3.HelperClass
         protected internal override void Update(GameTime gameTime, GraphicsDeviceManager graphics)
         {
             base.Update(gameTime, graphics);
-            kstate = Keyboard.GetState();
+            kState = Keyboard.GetState();
             collider = new Rectangle((int)position.X + offset, (int)position.Y + offset, sprite.Width, sprite.Height);
         }
 

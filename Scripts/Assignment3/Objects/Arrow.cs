@@ -1,17 +1,18 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using TopDownGame.Scripts.Assignment3.HelperClass;
 
 namespace TopDownGame.Scripts.Assignment3.Objects
 {
     internal class Arrow : GameObject
     {
-        private Player Player;
+        private Player player;
         private Vector2 moveDir;
         private float arrowSpeed;
         private Bow bow;
         public Arrow(string path, Player player, Bow bow) : base(player.position, path)
         {
-            Player = player;
+            this.player = player;
             this.bow = bow;
         }
 
@@ -21,17 +22,17 @@ namespace TopDownGame.Scripts.Assignment3.Objects
 
             arrowSpeed = 1500f;
 
-            if (Player.sprite == Player.sprites[1])
+            if (player.sprite == player.sprites[1])
             {
                 rotation = MathHelper.ToRadians(90);
                 moveDir = new Vector2(-1, 0);
             }
-            else if (Player.sprite == Player.sprites[2])
+            else if (player.sprite == player.sprites[2])
             {
                 rotation = MathHelper.ToRadians(-90);
                 moveDir = new Vector2(1, 0);
             }
-            else if (Player.sprite == Player.sprites[3])
+            else if (player.sprite == player.sprites[3])
             {
                 rotation = MathHelper.ToRadians(180);
                 moveDir = new Vector2(0, -1);
@@ -47,6 +48,7 @@ namespace TopDownGame.Scripts.Assignment3.Objects
             base.Update(gameTime, graphics);
             HandleArrowMovement();
             HandleOutOfBounds();
+            CheckIfHitEnemy();
         }
          
         private void HandleArrowMovement()
@@ -59,6 +61,25 @@ namespace TopDownGame.Scripts.Assignment3.Objects
             if (position.Y < 0 || position.X < 0 || position.Y > 1080 || position.X > 1920)
             {
                 bow.arrows.Remove(this);
+            }
+        }
+
+        private void CheckIfHitEnemy()
+        {
+            // loop through all objects 
+            foreach (GameObject obj in player.gameObjects)
+            {
+                // if colliding with enemy do proper actions
+                if (obj is Enemy enemy && collider.Intersects(obj.collider))
+                {
+                    enemy.OnHit();
+
+                    if (enemy.enemyHealth == 0) player.gameObjects.Remove(obj);
+
+                    bow.arrows.Remove(this);
+
+                    break;
+                }
             }
         }
     }

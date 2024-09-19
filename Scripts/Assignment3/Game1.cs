@@ -10,7 +10,7 @@ namespace TopDownGame.Scripts.Assignment3
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
 
-        // list to store all objects
+        // create a scene manager
         private SceneManager sceneManager;
 
         public Game1()
@@ -60,6 +60,5 @@ namespace TopDownGame.Scripts.Assignment3
 
             base.Draw(gameTime);
         }
-
     }
 }
