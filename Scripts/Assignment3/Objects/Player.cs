@@ -208,6 +208,5 @@ namespace TopDownGame.Scripts.Assignment3.Objects
                 hit = false;
             }
         }
-
     }
 }

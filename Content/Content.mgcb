@@ -202,6 +202,13 @@
 /processorParam:TextureFormat=Color
 /build:Sprites/gateopen.png
 
+#begin Sprites/largeFont.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:PremultiplyAlpha=True
+/processorParam:TextureFormat=Compressed
+/build:Sprites/largeFont.spritefont
+
 #begin Sprites/shield1.png
 /importer:TextureImporter
 /processor:TextureProcessor

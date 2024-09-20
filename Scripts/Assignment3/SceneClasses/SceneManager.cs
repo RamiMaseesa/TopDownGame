@@ -23,7 +23,6 @@ namespace TopDownGame.Scripts.Assignment3.SceneClasses
         private List<GameObject> level5 = new List<GameObject>();
         private List<GameObject> winScreen = new List<GameObject>();
 
-
         public Dictionary<int, List<GameObject>> scenes;
         public GameStates gameState = GameStates.TitleScreen;
 
@@ -38,6 +37,8 @@ namespace TopDownGame.Scripts.Assignment3.SceneClasses
 
             // lose screen
             loseScreen.Add(new Background(new Vector2(_graphics.PreferredBackBufferWidth / 2, _graphics.PreferredBackBufferHeight / 2), "Background"));
+            loseScreen.Add(new Text(new Vector2(_graphics.PreferredBackBufferWidth / 2, _graphics.PreferredBackBufferHeight / 5), "largeFont", 1f, Color.Red, "WOMP WOMP YOU LOST!"));
+            loseScreen.Add(new ButtonMainMenu(new Vector2(_graphics.PreferredBackBufferWidth / 2, _graphics.PreferredBackBufferHeight / 2), "button", "fontSmall", "Menu", this));
             scenes.Add((int)GameStates.LoseScreen, loseScreen);
 
 
@@ -55,7 +56,7 @@ namespace TopDownGame.Scripts.Assignment3.SceneClasses
             titleScreen.Add(new GateNextScene(new Vector2(_graphics.PreferredBackBufferWidth / 1.5f, _graphics.PreferredBackBufferHeight / 4), new string[] { "gateclosed", "gateopen" }, "font", this));
             titleScreen.Add(new Enemy(new Vector2(_graphics.PreferredBackBufferWidth / 3, _graphics.PreferredBackBufferHeight / 4), new string[] { "enemy", "enemyLeft", "enemyRight", "enemyBack" }, 300f));
             
-            titleScreen.Add(new Text(new Vector2(_graphics.PreferredBackBufferWidth / 2, _graphics.PreferredBackBufferHeight / 30), "BasicFont", 1f, Color.White, "Kill all bad guys to open gate"));
+            titleScreen.Add(new Text(new Vector2(_graphics.PreferredBackBufferWidth / 2, _graphics.PreferredBackBufferHeight / 30), "BasicFont", 1f, Color.White, "Kill all bad guys to open gate, also dont touch them!"));
             titleScreen.Add(new Text(new Vector2(_graphics.PreferredBackBufferWidth / 5, _graphics.PreferredBackBufferHeight / 3), "BasicFont", 1f, Color.White, "W A S D to walk"));
             titleScreen.Add(new Text(new Vector2(_graphics.PreferredBackBufferWidth / 2, _graphics.PreferredBackBufferHeight / 1.5f), "BasicFont", 1f, Color.White, "Space to fire bow"));
             titleScreen.Add(new Text(new Vector2(_graphics.PreferredBackBufferWidth / 1.5f + 200, _graphics.PreferredBackBufferHeight / 3), "BasicFont", 1f, Color.White, "E to pick up items"));
@@ -120,6 +121,8 @@ namespace TopDownGame.Scripts.Assignment3.SceneClasses
 
             // win Screen
             winScreen.Add(new Background(new Vector2(_graphics.PreferredBackBufferWidth / 2, _graphics.PreferredBackBufferHeight / 2), "Background"));
+            winScreen.Add(new Text(new Vector2(_graphics.PreferredBackBufferWidth / 2, _graphics.PreferredBackBufferHeight / 5), "largeFont", 1f, Color.Blue, "DINNER WINNER CHICKEN WINNER!"));
+            winScreen.Add(new ButtonMainMenu(new Vector2(_graphics.PreferredBackBufferWidth / 2, _graphics.PreferredBackBufferHeight / 2), "button", "fontSmall", "Menu", this));
             scenes.Add((int)GameStates.WinScreen, winScreen);
         }
 
