@@ -13,11 +13,13 @@ namespace TopDownGame.Scripts.Assignment3.SceneClasses
     internal class SceneBase
     {
         protected SceneManager sceneManager;
+        protected GameStates gameState;
         protected internal List<GameObject> gameObjects;
 
-        public SceneBase(SceneManager sceneManager)
+        public SceneBase(SceneManager sceneManager, GameStates gameState)
         {
             this.sceneManager = sceneManager;
+            this.gameState = gameState;
             gameObjects = new List<GameObject>();
         }
 
@@ -59,12 +61,12 @@ namespace TopDownGame.Scripts.Assignment3.SceneClasses
 
         }
 
-        protected internal virtual void OnSceneEnter()
+        public virtual void OnSceneEnter()
         {
 
         }
 
-        protected internal virtual void OnSceneExit()
+        public virtual void OnSceneExit()
         {
 
         }

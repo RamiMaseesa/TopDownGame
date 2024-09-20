@@ -17,7 +17,7 @@ namespace TopDownGame.Scripts.Assignment3.Gate
         {
             noEnemies = true;
 
-            foreach (GameObject obj in sceneManager.scenes[(int)sceneManager.gameState])
+            foreach (GameObject obj in sceneManager.scenes[(int)sceneManager.gameState].gameObjects)
             {
                 if (obj is Enemy)
                 {

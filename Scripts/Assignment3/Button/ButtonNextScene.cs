@@ -14,7 +14,7 @@ namespace TopDownGame.Scripts.Assignment3.Button
         protected internal override void OnClick()
         {
             sceneManager.NextSceneInList();
-            sceneManager.HandlePlayerData();
+            sceneManager.HandleSceneData();
         }
     }
 }

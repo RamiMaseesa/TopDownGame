@@ -4,27 +4,36 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TopDownGame.Scripts.Assignment3.Button;
+using TopDownGame.Scripts.Assignment3.Gate;
+using TopDownGame.Scripts.Assignment3.HelperClass;
+using TopDownGame.Scripts.Assignment3.Objects;
 
 namespace TopDownGame.Scripts.Assignment3.SceneClasses.Scenes
 {
     internal class Level2Scene : SceneBase
     {
-        public Level2Scene(SceneManager sceneManager) : base(sceneManager)
+        public Level2Scene(SceneManager sceneManager, GameStates gameState) : base(sceneManager, gameState)
         {
 
         }
 
         protected internal override void CreateObjects(GraphicsDeviceManager graphics)
         {
-
+            gameObjects.Add(new Background(new Vector2(graphics.PreferredBackBufferWidth / 2, graphics.PreferredBackBufferHeight / 2), "Background"));
+            gameObjects.Add(new ButtonMainMenu(new Vector2(graphics.PreferredBackBufferWidth - 80, 50), "button", "fontSmall", "Menu", sceneManager));
+            gameObjects.Add(new GatePreviousScene(new Vector2(graphics.PreferredBackBufferWidth / 2, 100), new string[] { "gateclosed", "gateopen" }, "font", sceneManager));
+            gameObjects.Add(new GateNextScene(new Vector2(graphics.PreferredBackBufferWidth / 2, 900), new string[] { "gateclosed", "gateopen" }, "font", sceneManager));
+            gameObjects.Add(new Sword(new Vector2(500, graphics.PreferredBackBufferHeight / 2), "sword2", "font"));
+            gameObjects.Add(new Shield(new Vector2(1300, graphics.PreferredBackBufferHeight / 2), new string[] { "shield2", "shield2back" }, "font"));
         }
 
-        protected internal override void OnSceneEnter()
+        public override void OnSceneEnter()
         {
 
         }
 
-        protected internal override void OnSceneExit()
+        public override void OnSceneExit()
         {
 
         }

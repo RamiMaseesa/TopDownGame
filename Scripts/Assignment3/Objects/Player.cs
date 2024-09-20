@@ -26,7 +26,8 @@ namespace TopDownGame.Scripts.Assignment3.Objects
         private KeyboardState privousKstate;
         private SceneManager sceneManager;
 
-        public Player(Vector2 position, string[] paths, float playerSpeed, List<GameObject> gameObjects, SceneManager sceneManager) : base(position, paths[0])
+        public Player(Vector2 position, string[] paths, float playerSpeed, List<GameObject> gameObjects, SceneManager sceneManager) 
+            : base(position, paths[0])
         {
             this.playerSpeed = playerSpeed;
             this.paths = paths;
@@ -170,7 +171,7 @@ namespace TopDownGame.Scripts.Assignment3.Objects
                     else if (interactable.CheckCollisionWithPlayer(this) && !kState.IsKeyDown(Keys.E) && privousKstate.IsKeyDown(Keys.E) && interactable is GateBase gate)
                     {
                         gate.OnGateEnter();
-                        sceneManager.HandlePlayerData();
+                        sceneManager.HandleSceneData();
                     }
                 }
                 else if (gameObject is Enemy enemy && collider.Intersects(enemy.collider) && !hit)
