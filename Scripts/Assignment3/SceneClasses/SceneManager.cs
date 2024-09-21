@@ -87,6 +87,37 @@ namespace TopDownGame.Scripts.Assignment3.SceneClasses
 
         public void GoToMenu()
         {
+            foreach (var obj in scenes[(int)gameState].gameObjects)
+            {
+                if (obj is Player player)
+                {
+                    // handle item transistoin
+                    if (player.sword != null)
+                    {
+                        scenes[(int)GameStates.Level1].gameObjects.Add(player.sword);
+                        scenes[(int)gameState].gameObjects.Remove(player.sword);
+                    }
+
+                    if (player.shield != null)
+                    {
+                        scenes[(int)GameStates.Level1].gameObjects.Add(player.shield);
+                        scenes[(int)gameState].gameObjects.Remove(player.shield);
+                    }
+
+                    if (player.bow != null)
+                    {
+                        scenes[(int)GameStates.Level1].gameObjects.Add(player.bow);
+                        scenes[(int)gameState].gameObjects.Remove(player.bow);
+                    }
+
+                    player.gameObjects = scenes[(int)GameStates.Level1].gameObjects;
+                    scenes[(int)GameStates.Level1].gameObjects.Add(player);
+                    scenes[(int)gameState].gameObjects.Remove(player);
+
+                    break;
+                }
+            }
+
             gameState = GameStates.MainMenu;
         }
 
