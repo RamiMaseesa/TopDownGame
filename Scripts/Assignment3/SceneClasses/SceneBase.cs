@@ -15,6 +15,8 @@ namespace TopDownGame.Scripts.Assignment3.SceneClasses
         protected SceneManager sceneManager;
         protected GameStates gameState;
         protected internal List<GameObject> gameObjects;
+        protected float gWidth;
+        protected float gHeight;
 
         public SceneBase(SceneManager sceneManager, GameStates gameState)
         {
@@ -25,6 +27,9 @@ namespace TopDownGame.Scripts.Assignment3.SceneClasses
 
         protected internal virtual void Initialize(GraphicsDeviceManager graphics)
         {
+            gWidth = graphics.PreferredBackBufferWidth;
+            gHeight = graphics.PreferredBackBufferHeight;
+
             CreateObjects(graphics);
 
             for (int i = 0; i < gameObjects.Count; i++)
