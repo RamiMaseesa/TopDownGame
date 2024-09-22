@@ -18,6 +18,7 @@ namespace TopDownGame.Scripts.Assignment3.SceneClasses.Scenes
             gameObjects.Add(new Background(new Vector2(gWidth / 2, gHeight / 2), "Background"));
             gameObjects.Add(new ButtonMainMenu(new Vector2(gWidth - 80, 50), "button", "fontSmall", "Menu", sceneManager));
             gameObjects.Add(new GatePreviousScene(new Vector2(gWidth / 10, gHeight / 2), new string[] { "gateclosed", "gateopen" }, "font", sceneManager));
+            gameObjects.Add(new GateNextScene(new Vector2(gWidth / 1.1f, gHeight / 2), new string[] { "gateclosed", "gateopen" }, "font", sceneManager));
         }
 
         public override void OnSceneEnter()

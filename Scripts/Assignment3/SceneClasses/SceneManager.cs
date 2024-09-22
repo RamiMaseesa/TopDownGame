@@ -147,7 +147,7 @@ namespace TopDownGame.Scripts.Assignment3.SceneClasses
                     if (!scenes[(int)gameState].gameObjects.Contains(player)) scenes[(int)gameState].gameObjects.Add(player);
                     player.gameObjects = scenes[(int)gameState].gameObjects;
                     if (scenes[(int)gameState - 1].gameObjects.Contains(player)) scenes[(int)gameState - 1].gameObjects.Remove(player);
-                    if (gameState != GameStates.Level5 && scenes[(int)gameState + 1].gameObjects.Contains(player))
+                    if (gameState != GameStates.WinScreen && scenes[(int)gameState + 1].gameObjects.Contains(player))
                         scenes[(int)gameState + 1].gameObjects.Remove(player);
 
                     break;
@@ -181,7 +181,7 @@ namespace TopDownGame.Scripts.Assignment3.SceneClasses
         {
             scenes[(int)gameState].gameObjects.Add(gameObject);
             scenes[(int)gameState - 1].gameObjects.Remove(gameObject);
-            if (gameState != GameStates.Level5) scenes[(int)gameState + 1].gameObjects.Remove(gameObject);
+            if (gameState != GameStates.WinScreen) scenes[(int)gameState + 1].gameObjects.Remove(gameObject);
         }
 
         public void GoToLoseScreen()
