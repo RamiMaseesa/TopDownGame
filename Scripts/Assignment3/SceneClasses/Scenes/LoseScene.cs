@@ -1,9 +1,4 @@
 ﻿using Microsoft.Xna.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using TopDownGame.Scripts.Assignment3.Button;
 using TopDownGame.Scripts.Assignment3.HelperClass;
 using TopDownGame.Scripts.Assignment3.Objects;

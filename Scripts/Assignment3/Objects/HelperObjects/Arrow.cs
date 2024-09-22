@@ -1,5 +1,4 @@
 ﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using TopDownGame.Scripts.Assignment3.HelperClass;
 
 namespace TopDownGame.Scripts.Assignment3.Objects.HelperObjects
