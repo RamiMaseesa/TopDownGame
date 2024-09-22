@@ -8,6 +8,7 @@ using TopDownGame.Scripts.Assignment3.Button;
 using TopDownGame.Scripts.Assignment3.Gate;
 using TopDownGame.Scripts.Assignment3.HelperClass;
 using TopDownGame.Scripts.Assignment3.Objects;
+using TopDownGame.Scripts.Assignment3.Objects.Collectables;
 
 namespace TopDownGame.Scripts.Assignment3.SceneClasses.Scenes
 {
@@ -32,7 +33,11 @@ namespace TopDownGame.Scripts.Assignment3.SceneClasses.Scenes
             gameObjects.Add(new Bow(new Vector2(graphics.PreferredBackBufferWidth / 2, graphics.PreferredBackBufferHeight / 1.2f), "bow", "font", "arrow"));
             gameObjects.Add(new GateNextScene(new Vector2(graphics.PreferredBackBufferWidth / 1.5f, graphics.PreferredBackBufferHeight / 4), new string[] { "gateclosed", "gateopen" }, "font", sceneManager));
             gameObjects.Add(new Enemy(new Vector2(graphics.PreferredBackBufferWidth / 3, graphics.PreferredBackBufferHeight / 4), new string[] { "enemy", "enemyLeft", "enemyRight", "enemyBack" }, 300f));
+            gameObjects.Add(new CollectableHeart(new Vector2(400, graphics.PreferredBackBufferHeight / 1.2f), "heart", gameObjects));
+            gameObjects.Add(new CollectableSpeed(new Vector2(200, graphics.PreferredBackBufferHeight / 1.2f), "feather", gameObjects));
+            gameObjects.Add(new CollectableSpeed(new Vector2(600, graphics.PreferredBackBufferHeight / 1.2f), "feather", gameObjects));
 
+            gameObjects.Add(new Text(new Vector2(400, graphics.PreferredBackBufferHeight / 1.5f), "BasicFont", 1f, Color.White, "These are Collectables"));
             gameObjects.Add(new Text(new Vector2(graphics.PreferredBackBufferWidth / 2, graphics.PreferredBackBufferHeight / 30), "BasicFont", 1f, Color.White, "Kill all bad guys to open gate, also dont touch them!"));
             gameObjects.Add(new Text(new Vector2(graphics.PreferredBackBufferWidth / 5, graphics.PreferredBackBufferHeight / 3), "BasicFont", 1f, Color.White, "W A S D to walk"));
             gameObjects.Add(new Text(new Vector2(graphics.PreferredBackBufferWidth / 2, graphics.PreferredBackBufferHeight / 1.5f), "BasicFont", 1f, Color.White, "Space to fire bow"));
