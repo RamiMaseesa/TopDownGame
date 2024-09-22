@@ -3,6 +3,7 @@ using TopDownGame.Scripts.Assignment3.Button;
 using TopDownGame.Scripts.Assignment3.Gate;
 using TopDownGame.Scripts.Assignment3.HelperClass;
 using TopDownGame.Scripts.Assignment3.Objects;
+using TopDownGame.Scripts.Assignment3.Objects.Collectables;
 
 namespace TopDownGame.Scripts.Assignment3.SceneClasses.Scenes
 {
@@ -21,6 +22,7 @@ namespace TopDownGame.Scripts.Assignment3.SceneClasses.Scenes
             gameObjects.Add(new GateNextScene(new Vector2(gWidth / 1.2f, 100), new string[] { "gateclosed", "gateopen" }, "font", sceneManager));
             gameObjects.Add(new Sword(new Vector2(500, gHeight / 2), "sword3", "font"));
             gameObjects.Add(new Shield(new Vector2(1300, gHeight / 2), new string[] { "shield3", "shield3back" }, "font"));
+            gameObjects.Add(new CollectableSpeed(new Vector2(gWidth / 2, gHeight / 2), "feather", gameObjects));
         }
 
         public override void OnSceneEnter()

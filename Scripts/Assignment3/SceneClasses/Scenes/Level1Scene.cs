@@ -3,6 +3,7 @@ using TopDownGame.Scripts.Assignment3.Button;
 using TopDownGame.Scripts.Assignment3.Gate;
 using TopDownGame.Scripts.Assignment3.HelperClass;
 using TopDownGame.Scripts.Assignment3.Objects;
+using TopDownGame.Scripts.Assignment3.Objects.Collectables;
 
 namespace TopDownGame.Scripts.Assignment3.SceneClasses.Scenes
 {

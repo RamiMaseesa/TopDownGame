@@ -3,6 +3,7 @@ using TopDownGame.Scripts.Assignment3.Button;
 using TopDownGame.Scripts.Assignment3.Gate;
 using TopDownGame.Scripts.Assignment3.HelperClass;
 using TopDownGame.Scripts.Assignment3.Objects;
+using TopDownGame.Scripts.Assignment3.Objects.Collectables;
 
 namespace TopDownGame.Scripts.Assignment3.SceneClasses.Scenes
 {
@@ -17,6 +18,15 @@ namespace TopDownGame.Scripts.Assignment3.SceneClasses.Scenes
         {
             gameObjects.Add(new Background(new Vector2(gWidth / 2, gHeight / 2), "Background"));
             gameObjects.Add(new ButtonMainMenu(new Vector2(gWidth - 80, 50), "button", "fontSmall", "Menu", sceneManager));
+
+            gameObjects.Add(new Enemy(new Vector2(gWidth / 2, gHeight / 1.5f), new string[] { "enemy", "enemyLeft", "enemyRight", "enemyBack" }, 300f));
+            gameObjects.Add(new Enemy(new Vector2(gWidth / 2, gHeight / 2), new string[] { "enemy", "enemyLeft", "enemyRight", "enemyBack" }, 300f));
+            gameObjects.Add(new Enemy(new Vector2(gWidth / 2, gHeight / 3), new string[] { "enemy", "enemyLeft", "enemyRight", "enemyBack" }, 300f));
+
+            gameObjects.Add(new CollectableHeart(new Vector2(gWidth / 1.5f, gHeight / 1.5f), "heart", gameObjects));
+            gameObjects.Add(new CollectableHeart(new Vector2(gWidth / 1.5f, gHeight / 2), "heart", gameObjects));
+            gameObjects.Add(new CollectableHeart(new Vector2(gWidth / 1.5f, gHeight / 3), "heart", gameObjects));
+
             gameObjects.Add(new GatePreviousScene(new Vector2(gWidth / 10, gHeight / 2), new string[] { "gateclosed", "gateopen" }, "font", sceneManager));
             gameObjects.Add(new GateNextScene(new Vector2(gWidth / 1.1f, gHeight / 2), new string[] { "gateclosed", "gateopen" }, "font", sceneManager));
         }
