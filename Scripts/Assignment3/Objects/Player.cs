@@ -2,9 +2,12 @@
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using System;
 using System.Collections.Generic;
 using TopDownGame.Scripts.Assignment3.Gate;
 using TopDownGame.Scripts.Assignment3.HelperClass;
+using TopDownGame.Scripts.Assignment3.Objects.Collectables;
+using TopDownGame.Scripts.Assignment3.Objects.HelperObjects;
 using TopDownGame.Scripts.Assignment3.SceneClasses;
 
 namespace TopDownGame.Scripts.Assignment3.Objects
@@ -16,15 +19,16 @@ namespace TopDownGame.Scripts.Assignment3.Objects
         public Bow bow;
         public Texture2D[] sprites;
         public List<GameObject> gameObjects;
+        public float playerSpeed;
+        public int health;
 
         private bool hit;
-        private int health;
         private float time;
         private float timeInterval;
-        private float playerSpeed;
         private string[] paths;
         private KeyboardState privousKstate;
         private SceneManager sceneManager;
+        private Heart[] hearts;
 
         public Player(Vector2 position, string[] paths, float playerSpeed, List<GameObject> gameObjects, SceneManager sceneManager) 
             : base(position, paths[0])
@@ -50,6 +54,13 @@ namespace TopDownGame.Scripts.Assignment3.Objects
             time = 0;
             timeInterval = .15f;
             hit = false;
+            hearts = new Heart[health];
+
+            for (int i = 0; i < health; i++)
+            {
+                hearts[i] = new Heart(new Vector2(100 * (i + 1), 60), "heart");
+                hearts[i].Initialize(graphics);
+            }
         }
 
         protected internal override void LoadContent(ContentManager content, GraphicsDeviceManager graphics)
@@ -59,6 +70,11 @@ namespace TopDownGame.Scripts.Assignment3.Objects
             for (int i = 0; i < paths.Length; i++)
             {
                 sprites[i] = content.Load<Texture2D>(paths[i]);
+            }
+
+            for (int i = 0; i < health; i++)
+            {
+                hearts[i].LoadContent(content, graphics);
             }
 
         }
@@ -72,6 +88,16 @@ namespace TopDownGame.Scripts.Assignment3.Objects
             AfterHit();
 
             privousKstate = kState;
+        }
+
+        protected internal override void Draw(SpriteBatch spriteBatch)
+        {
+            base.Draw(spriteBatch);
+
+            for (int i = 0; i < health; i++)
+            {
+                hearts[i].Draw(spriteBatch);
+            }
         }
 
         protected internal virtual void CheckToSwitchItems(Interactable inter)
@@ -173,6 +199,10 @@ namespace TopDownGame.Scripts.Assignment3.Objects
                         gate.OnGateEnter();
                         sceneManager.HandleSceneData();
                     }
+                }
+                else if (gameObject is CollectablesBase collectable && collider.Intersects(collectable.collider))
+                {
+                    collectable.OnCollision(this);
                 }
                 else if (gameObject is Enemy enemy && collider.Intersects(enemy.collider) && !hit)
                 {

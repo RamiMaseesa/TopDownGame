@@ -4,6 +4,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System.Collections.Generic;
 using TopDownGame.Scripts.Assignment3.HelperClass;
+using TopDownGame.Scripts.Assignment3.Objects.HelperObjects;
 
 namespace TopDownGame.Scripts.Assignment3.Objects
 {

@@ -2,7 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using TopDownGame.Scripts.Assignment3.HelperClass;
 
-namespace TopDownGame.Scripts.Assignment3.Objects
+namespace TopDownGame.Scripts.Assignment3.Objects.HelperObjects
 {
     internal class Arrow : GameObject
     {
@@ -50,7 +50,7 @@ namespace TopDownGame.Scripts.Assignment3.Objects
             HandleOutOfBounds();
             CheckIfHitEnemy();
         }
-         
+
         private void HandleArrowMovement()
         {
             position += moveDir * arrowSpeed * deltaTime;
