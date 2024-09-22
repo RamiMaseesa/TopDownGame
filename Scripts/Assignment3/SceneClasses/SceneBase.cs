@@ -30,7 +30,7 @@ namespace TopDownGame.Scripts.Assignment3.SceneClasses
             gWidth = graphics.PreferredBackBufferWidth;
             gHeight = graphics.PreferredBackBufferHeight;
 
-            CreateObjects(graphics);
+            CreateObjects();
 
             for (int i = 0; i < gameObjects.Count; i++)
             {
@@ -61,7 +61,7 @@ namespace TopDownGame.Scripts.Assignment3.SceneClasses
 
 
         // these methods will be overridden
-        protected internal virtual void CreateObjects(GraphicsDeviceManager graphics)
+        protected internal virtual void CreateObjects()
         {
 
         }

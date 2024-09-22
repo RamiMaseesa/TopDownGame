@@ -19,7 +19,7 @@ namespace TopDownGame.Scripts.Assignment3.SceneClasses.Scenes
 
         }
 
-        protected internal override void CreateObjects(GraphicsDeviceManager graphics)
+        protected internal override void CreateObjects()
         {
             gameObjects.Add(new Background(new Vector2(gWidth / 2, gHeight / 2), "Background"));
             gameObjects.Add(new ButtonNextScene(new Vector2(gWidth / 2, 400), "button", "fontSmall", "Start", sceneManager));

@@ -17,11 +17,11 @@ namespace TopDownGame.Scripts.Assignment3.SceneClasses.Scenes
 
         }
 
-        protected internal override void CreateObjects(GraphicsDeviceManager graphics)
+        protected internal override void CreateObjects()
         {
-            gameObjects.Add(new Background(new Vector2(graphics.PreferredBackBufferWidth / 2, graphics.PreferredBackBufferHeight / 2), "Background"));
-            gameObjects.Add(new ButtonNextScene(new Vector2(graphics.PreferredBackBufferWidth / 2, 400), "button", "fontSmall", "Play", sceneManager));
-            gameObjects.Add(new ButtonQuit(new Vector2(graphics.PreferredBackBufferWidth / 2, 600), "button", "fontSmall", "Quit", sceneManager));
+            gameObjects.Add(new Background(new Vector2(gWidth / 2, gHeight / 2), "Background"));
+            gameObjects.Add(new ButtonNextScene(new Vector2(gWidth / 2, 400), "button", "fontSmall", "Play", sceneManager));
+            gameObjects.Add(new ButtonQuit(new Vector2(gWidth / 2, 600), "button", "fontSmall", "Quit", sceneManager));
         }
 
         public override void OnSceneEnter()

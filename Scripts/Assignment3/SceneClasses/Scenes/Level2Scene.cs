@@ -18,14 +18,14 @@ namespace TopDownGame.Scripts.Assignment3.SceneClasses.Scenes
 
         }
 
-        protected internal override void CreateObjects(GraphicsDeviceManager graphics)
+        protected internal override void CreateObjects()
         {
-            gameObjects.Add(new Background(new Vector2(graphics.PreferredBackBufferWidth / 2, graphics.PreferredBackBufferHeight / 2), "Background"));
-            gameObjects.Add(new ButtonMainMenu(new Vector2(graphics.PreferredBackBufferWidth - 80, 50), "button", "fontSmall", "Menu", sceneManager));
-            gameObjects.Add(new GatePreviousScene(new Vector2(graphics.PreferredBackBufferWidth / 2, 100), new string[] { "gateclosed", "gateopen" }, "font", sceneManager));
-            gameObjects.Add(new GateNextScene(new Vector2(graphics.PreferredBackBufferWidth / 2, 900), new string[] { "gateclosed", "gateopen" }, "font", sceneManager));
-            gameObjects.Add(new Sword(new Vector2(500, graphics.PreferredBackBufferHeight / 2), "sword2", "font"));
-            gameObjects.Add(new Shield(new Vector2(1300, graphics.PreferredBackBufferHeight / 2), new string[] { "shield2", "shield2back" }, "font"));
+            gameObjects.Add(new Background(new Vector2(gWidth / 2, gHeight / 2), "Background"));
+            gameObjects.Add(new ButtonMainMenu(new Vector2(gWidth - 80, 50), "button", "fontSmall", "Menu", sceneManager));
+            gameObjects.Add(new GatePreviousScene(new Vector2(gWidth / 2, 100), new string[] { "gateclosed", "gateopen" }, "font", sceneManager));
+            gameObjects.Add(new GateNextScene(new Vector2(gWidth / 2, 900), new string[] { "gateclosed", "gateopen" }, "font", sceneManager));
+            gameObjects.Add(new Sword(new Vector2(500, gHeight / 2), "sword2", "font"));
+            gameObjects.Add(new Shield(new Vector2(1300, gHeight / 2), new string[] { "shield2", "shield2back" }, "font"));
         }
 
         public override void OnSceneEnter()
