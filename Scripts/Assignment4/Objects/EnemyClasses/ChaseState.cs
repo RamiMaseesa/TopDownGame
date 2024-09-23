@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace TopDownGame.Scripts.Assignment4.Objects.EnemyClasses
 {
-    internal class ChaseState
+    internal class ChaseState : EnemyStateBase
     {
+        public ChaseState()
+        {
+
+        }
     }
 }

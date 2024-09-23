@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace TopDownGame.Scripts.Assignment4.Objects.EnemyClasses
 {
-    internal class IdleState
+    internal class IdleState : EnemyStateBase
     {
+        public IdleState()
+        {
+
+        }
     }
 }
