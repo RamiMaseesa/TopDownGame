@@ -8,7 +8,7 @@ using TopDownGame.Scripts.Assignment4.HelperClass;
 
 namespace TopDownGame.Scripts.Assignment4.Objects.EnemyClasses.Enemies
 {
-    internal class FastEnemy : GameObject
+    internal class FastEnemy : EnemyBase
     {
         public FastEnemy(Vector2 position, string path) : base(position, path)
         {

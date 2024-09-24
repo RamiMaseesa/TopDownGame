@@ -8,7 +8,7 @@ using TopDownGame.Scripts.Assignment4.HelperClass;
 
 namespace TopDownGame.Scripts.Assignment4.Objects.EnemyClasses.Enemies
 {
-    internal class NormalEnemy : GameObject
+    internal class NormalEnemy : EnemyBase
     {
         public NormalEnemy(Vector2 position, string path) : base(position, path)
         {
