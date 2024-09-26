@@ -14,9 +14,10 @@ namespace TopDownGame.Scripts.Assignment4.HelperClass
         protected internal Vector2 position;
         protected internal Rectangle collider;
         protected internal Color color;
+        protected internal KeyboardState kState;
         protected internal Texture2D sprite;
 
-        protected KeyboardState kState;
+        
         public GameObject(Vector2 position, string path)
         {
             this.position = position;

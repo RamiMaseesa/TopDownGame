@@ -10,12 +10,16 @@ namespace TopDownGame.Scripts.Assignment4.Objects.EnemyClasses
     internal class EnemyStateBase
     {
         protected internal EnemyBase enemy;
-        protected internal Player Player;
+        protected internal Player player;
 
         public EnemyStateBase(EnemyBase enemy, Player player)
         {
             this.enemy = enemy;
-            this.Player = player;
+            this.player = player;
         }
+
+        protected internal virtual void UpdateState() { }
+        protected internal virtual void OnStateEnter() { }
+        protected internal virtual void OnStateExit() { }
     }
 }

@@ -9,7 +9,7 @@ namespace TopDownGame.Scripts.Assignment4.Objects.EnemyClasses
     enum EnemyState
     {
         Idle,
-        Chase,
-        Patrol
+        Patrol,
+        Chase
     }
 }

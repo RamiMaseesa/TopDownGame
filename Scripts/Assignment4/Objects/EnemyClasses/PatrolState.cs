@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Xna.Framework;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,5 +14,11 @@ namespace TopDownGame.Scripts.Assignment4.Objects.EnemyClasses
         {
 
         }
+
+        protected internal override void UpdateState()
+        {
+            // check if player in range
+        }
+
     }
 }

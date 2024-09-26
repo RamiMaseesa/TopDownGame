@@ -13,5 +13,11 @@ namespace TopDownGame.Scripts.Assignment4.Objects.EnemyClasses
         {
 
         }
+
+        protected internal override void UpdateState()
+        {
+
+        }
+
     }
 }
