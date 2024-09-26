@@ -10,7 +10,7 @@ namespace TopDownGame.Scripts.Assignment4.Objects.EnemyClasses.Enemies
 {
     internal class ArcherEnemy : EnemyBase
     {
-        public ArcherEnemy(Vector2 position, string path) : base(position, path)
+        public ArcherEnemy(Vector2 position, string[] path, List<GameObject> gameobjects) : base(position, path, gameobjects)
         {
 
         }

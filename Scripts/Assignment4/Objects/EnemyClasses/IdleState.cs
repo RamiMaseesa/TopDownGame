@@ -24,10 +24,16 @@ namespace TopDownGame.Scripts.Assignment4.Objects.EnemyClasses
 
             if (timer > timeIdle)
             {
-                enemy.ChangeState(EnemyState.Patrol);
+                timer = 0f;
+                enemy.ChangeState(enemy.patrol);
             }
 
-            // check if player in range
+            float distanceToPlayer = Vector2.Distance(enemy.position, player.position);
+
+            if (distanceToPlayer <= enemy.detectionRange)
+            {
+                enemy.ChangeState(enemy.chase);
+            }
         }
 
     }

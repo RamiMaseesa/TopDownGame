@@ -10,7 +10,7 @@ namespace TopDownGame.Scripts.Assignment4.Objects.EnemyClasses.Enemies
 {
     internal class FastEnemy : EnemyBase
     {
-        public FastEnemy(Vector2 position, string path) : base(position, path)
+        public FastEnemy(Vector2 position, string[] path, List<GameObject> gameobjects) : base(position, path, gameobjects)
         {
 
         }
