@@ -104,6 +104,8 @@ namespace TopDownGame.Scripts.Assignment4.Objects.EnemyClasses.Enemies
                 flags[i].Update(gameTime, graphics);
             }
 
+
+
             enemyStateBase.UpdateState();
 
         }

@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using TopDownGame.Scripts.Assignment4.HelperClass;
+using TopDownGame.Scripts.Assignment4.Objects.EnemyClasses.Enemies;
 
 namespace TopDownGame.Scripts.Assignment4.Objects.HelperObjects
 {

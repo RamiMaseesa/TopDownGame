@@ -1,6 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using TopDownGame.Scripts.Assignment4.HelperClass;
-using TopDownGame.Scripts.Assignment4.Objects;
+using TopDownGame.Scripts.Assignment4.Objects.EnemyClasses.Enemies;
 using TopDownGame.Scripts.Assignment4.SceneClasses;
 
 namespace TopDownGame.Scripts.Assignment4.Gate
@@ -19,7 +19,7 @@ namespace TopDownGame.Scripts.Assignment4.Gate
 
             foreach (GameObject obj in sceneManager.scenes[(int)sceneManager.gameState].gameObjects)
             {
-                if (obj is Enemy)
+                if (obj is Enemy || obj is EnemyBase)
                 {
                     noEnemies = false;
                 }

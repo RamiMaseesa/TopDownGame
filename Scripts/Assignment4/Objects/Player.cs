@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using TopDownGame.Scripts.Assignment4.Gate;
 using TopDownGame.Scripts.Assignment4.HelperClass;
 using TopDownGame.Scripts.Assignment4.Objects.Collectables;
+using TopDownGame.Scripts.Assignment4.Objects.EnemyClasses.Enemies;
 using TopDownGame.Scripts.Assignment4.Objects.HelperObjects;
 using TopDownGame.Scripts.Assignment4.SceneClasses;
 
@@ -205,7 +206,13 @@ namespace TopDownGame.Scripts.Assignment4.Objects
                 }
                 else if (gameObject is Enemy enemy && collider.Intersects(enemy.collider) && !hit)
                 {
-                    OnHit();
+                    if (sword != null) gameObjects.Remove(enemy);
+                    if (shield == null) OnHit();
+                }
+                else if (gameObject is EnemyBase enemyBase && collider.Intersects(enemyBase.collider) && !hit)
+                {
+                    if (sword != null) gameObjects.Remove(enemyBase);
+                    if (shield == null) OnHit();
                 }
             }
 

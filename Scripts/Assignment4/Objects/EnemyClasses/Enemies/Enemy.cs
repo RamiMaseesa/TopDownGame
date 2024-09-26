@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using TopDownGame.Scripts.Assignment4.HelperClass;
 
-namespace TopDownGame.Scripts.Assignment4.Objects
+namespace TopDownGame.Scripts.Assignment4.Objects.EnemyClasses.Enemies
 {
     internal class Enemy : GameObject
     {
@@ -15,7 +15,7 @@ namespace TopDownGame.Scripts.Assignment4.Objects
         private float enemySpeed;
         private Texture2D[] sprites;
         private string[] paths;
-        public Enemy(Vector2 position, string[] paths, float enemySpeed) 
+        public Enemy(Vector2 position, string[] paths, float enemySpeed)
             : base(position, paths[0])
         {
             this.paths = paths;
@@ -56,9 +56,9 @@ namespace TopDownGame.Scripts.Assignment4.Objects
         {
             enemyHealth--;
 
-            if (enemyHealth <= 0) return true; 
+            if (enemyHealth <= 0) return true;
 
-            color = Color.Red; 
+            color = Color.Red;
             hit = true;
 
             return false;

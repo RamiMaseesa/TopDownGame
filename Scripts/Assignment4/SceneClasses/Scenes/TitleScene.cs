@@ -4,6 +4,7 @@ using TopDownGame.Scripts.Assignment4.Gate;
 using TopDownGame.Scripts.Assignment4.HelperClass;
 using TopDownGame.Scripts.Assignment4.Objects;
 using TopDownGame.Scripts.Assignment4.Objects.Collectables;
+using TopDownGame.Scripts.Assignment4.Objects.EnemyClasses.Enemies;
 
 namespace TopDownGame.Scripts.Assignment4.SceneClasses.Scenes
 {
