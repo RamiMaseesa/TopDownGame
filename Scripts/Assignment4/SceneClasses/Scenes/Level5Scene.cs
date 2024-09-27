@@ -20,9 +20,17 @@ namespace TopDownGame.Scripts.Assignment4.SceneClasses.Scenes
             gameObjects.Add(new Background(new Vector2(gWidth / 2, gHeight / 2), "Background"));
             gameObjects.Add(new ButtonMainMenu(new Vector2(gWidth - 80, 50), "button", "fontSmall", "Menu", sceneManager));
 
-            gameObjects.Add(new Enemy(new Vector2(gWidth / 2, gHeight / 1.5f), new string[] { "enemy", "enemyLeft", "enemyRight", "enemyBack" }, 300f));
-            gameObjects.Add(new Enemy(new Vector2(gWidth / 2, gHeight / 2), new string[] { "enemy", "enemyLeft", "enemyRight", "enemyBack" }, 300f));
-            gameObjects.Add(new Enemy(new Vector2(gWidth / 2, gHeight / 3), new string[] { "enemy", "enemyLeft", "enemyRight", "enemyBack" }, 300f));
+            gameObjects.Add(new NormalEnemy(new Vector2(gWidth / 2, gHeight / 5), new string[] { "enemy", "enemyLeft", "enemyRight", "enemyBack" }, gameObjects));
+            gameObjects.Add(new NormalEnemy(new Vector2(gWidth / 2, gHeight / 3), new string[] { "enemy", "enemyLeft", "enemyRight", "enemyBack" }, gameObjects));
+            gameObjects.Add(new NormalEnemy(new Vector2(gWidth / 2, gHeight / 2), new string[] { "enemy", "enemyLeft", "enemyRight", "enemyBack" }, gameObjects));
+            gameObjects.Add(new NormalEnemy(new Vector2(gWidth / 2, gHeight / 1.5f), new string[] { "enemy", "enemyLeft", "enemyRight", "enemyBack" }, gameObjects));
+            gameObjects.Add(new NormalEnemy(new Vector2(gWidth / 2, gHeight / 1.25f), new string[] { "enemy", "enemyLeft", "enemyRight", "enemyBack" }, gameObjects));
+
+            gameObjects.Add(new FastEnemy(new Vector2(gWidth / 2, gHeight / 5), new string[] { "enemy", "enemyLeft", "enemyRight", "enemyBack" }, gameObjects));
+            gameObjects.Add(new TankEnemy(new Vector2(gWidth / 2, gHeight / 3), new string[] { "enemy", "enemyLeft", "enemyRight", "enemyBack" }, gameObjects));
+            gameObjects.Add(new TankEnemy(new Vector2(gWidth / 2, gHeight / 2), new string[] { "enemy", "enemyLeft", "enemyRight", "enemyBack" }, gameObjects));
+            gameObjects.Add(new TankEnemy(new Vector2(gWidth / 2, gHeight / 1.5f), new string[] { "enemy", "enemyLeft", "enemyRight", "enemyBack" }, gameObjects));
+            gameObjects.Add(new FastEnemy(new Vector2(gWidth / 2, gHeight / 1.25f), new string[] { "enemy", "enemyLeft", "enemyRight", "enemyBack" }, gameObjects));
 
             gameObjects.Add(new CollectableHeart(new Vector2(gWidth / 1.5f, gHeight / 1.5f), "heart", gameObjects));
             gameObjects.Add(new CollectableHeart(new Vector2(gWidth / 1.5f, gHeight / 2), "heart", gameObjects));

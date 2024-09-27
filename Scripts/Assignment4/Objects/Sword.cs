@@ -5,9 +5,11 @@ namespace TopDownGame.Scripts.Assignment4.Objects
 {
     internal class Sword : Interactable
     {
-        public Sword(Vector2 position, string path, string fontPath) : base(position, path, fontPath)
-        {
+        public int durability;
 
+        public Sword(Vector2 position, string path, string fontPath, int durability) : base(position, path, fontPath)
+        {
+            this.durability = durability;
         }
 
         protected internal override void Initialize(GraphicsDeviceManager graphics)

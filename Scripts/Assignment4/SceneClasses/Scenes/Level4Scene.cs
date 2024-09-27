@@ -4,6 +4,7 @@ using TopDownGame.Scripts.Assignment4.Gate;
 using TopDownGame.Scripts.Assignment4.HelperClass;
 using TopDownGame.Scripts.Assignment4.Objects;
 using TopDownGame.Scripts.Assignment4.Objects.Collectables;
+using TopDownGame.Scripts.Assignment4.Objects.EnemyClasses.Enemies;
 
 namespace TopDownGame.Scripts.Assignment4.SceneClasses.Scenes
 {
@@ -22,6 +23,11 @@ namespace TopDownGame.Scripts.Assignment4.SceneClasses.Scenes
             gameObjects.Add(new GateNextScene(new Vector2(gWidth / 10, gHeight / 2), new string[] { "gateclosed", "gateopen" }, "font", sceneManager));
             gameObjects.Add(new Bow(new Vector2(gWidth / 2, 800), "bow", "font", "arrow"));
             gameObjects.Add(new CollectableSpeed(new Vector2(gWidth / 2, gHeight / 2), "feather", gameObjects));
+            gameObjects.Add(new FastEnemy(new Vector2(gWidth / 2, gHeight / 5), new string[] { "enemy", "enemyLeft", "enemyRight", "enemyBack" }, gameObjects));
+            gameObjects.Add(new FastEnemy(new Vector2(gWidth / 2, gHeight / 3), new string[] { "enemy", "enemyLeft", "enemyRight", "enemyBack" }, gameObjects));
+            gameObjects.Add(new TankEnemy(new Vector2(gWidth / 2, gHeight / 2), new string[] { "enemy", "enemyLeft", "enemyRight", "enemyBack" }, gameObjects));
+            gameObjects.Add(new FastEnemy(new Vector2(gWidth / 2, gHeight / 1.5f), new string[] { "enemy", "enemyLeft", "enemyRight", "enemyBack" }, gameObjects));
+            gameObjects.Add(new FastEnemy(new Vector2(gWidth / 2, gHeight / 1.25f), new string[] { "enemy", "enemyLeft", "enemyRight", "enemyBack" }, gameObjects));
         }
 
         public override void OnSceneEnter()

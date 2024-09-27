@@ -14,5 +14,16 @@ namespace TopDownGame.Scripts.Assignment4.Objects.EnemyClasses.Enemies
         {
 
         }
+
+        protected internal override void Initialize(GraphicsDeviceManager graphics)
+        {
+            base.Initialize(graphics);
+
+            detectionRange = 200;
+            speed = 400;
+            slowedSpeed = 300;
+            color = Color.LightBlue;
+
+        }
     }
 }

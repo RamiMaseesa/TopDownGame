@@ -23,6 +23,10 @@ namespace TopDownGame.Scripts.Assignment4.Objects.EnemyClasses
 
         protected internal override void UpdateState()
         {
+            if (player == null)
+            {
+                player = enemy.player;
+            }
 
             float distanceToPlayer = Vector2.Distance(enemy.position, player.position);
 

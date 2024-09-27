@@ -10,9 +10,12 @@ namespace TopDownGame.Scripts.Assignment4.Objects
         private Texture2D[] sprites;
         private string[] paths;
         private Vector2 offsetForWhenEquiped;
-        public Shield(Vector2 position, string[] paths, string fontPath) : base(position, paths[0], fontPath)
+
+        public int durability;
+        public Shield(Vector2 position, string[] paths, string fontPath, int durability) : base(position, paths[0], fontPath)
         {
             this.paths = paths;
+            this.durability = durability;
         }
 
         protected internal override void Initialize(GraphicsDeviceManager graphics)

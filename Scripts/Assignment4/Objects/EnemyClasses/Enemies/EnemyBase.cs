@@ -3,10 +3,6 @@ using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Reflection.Metadata;
-using System.Text;
-using System.Threading.Tasks;
 using TopDownGame.Scripts.Assignment4.HelperClass;
 using TopDownGame.Scripts.Assignment4.Objects.HelperObjects;
 
@@ -28,6 +24,7 @@ namespace TopDownGame.Scripts.Assignment4.Objects.EnemyClasses.Enemies
 
         public float detectionRange;
         public float speed;
+        public float slowedSpeed;
 
         public EnemyBase(Vector2 position, string[] paths, List<GameObject> gameObjects) : base(position, paths[0])
         {
@@ -99,14 +96,29 @@ namespace TopDownGame.Scripts.Assignment4.Objects.EnemyClasses.Enemies
         {
             base.Update(gameTime, graphics);
 
+            if (player == null)
+            {
+                for (int i = 0; i < gameObjects.Count; i++)
+                {
+                    if (gameObjects[i] is Player player)
+                    {
+                        this.player = player;
+
+                        idle = new IdleState(this, player);
+                        patrol = new PatrolState(this, player);
+                        chase = new ChaseState(this, player);
+                    }
+                }
+            }
+
             for (int i = 0; i < flags.Length; i++)
             {
                 flags[i].Update(gameTime, graphics);
             }
 
 
+            if (player != null) enemyStateBase.UpdateState();
 
-            enemyStateBase.UpdateState();
 
         }
 

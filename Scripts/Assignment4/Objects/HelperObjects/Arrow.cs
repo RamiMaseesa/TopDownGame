@@ -72,7 +72,15 @@ namespace TopDownGame.Scripts.Assignment4.Objects.HelperObjects
                 // if colliding with enemy do proper actions
                 if (obj is Enemy enemy && collider.Intersects(obj.collider))
                 {
-                    if (enemy.OnHit()) player.gameObjects.Remove(obj);
+                    player.gameObjects.Remove(obj);
+
+                    bow.arrows.Remove(this);
+
+                    break;
+                }
+                else if (obj is EnemyBase enemyBase && collider.Intersects(obj.collider))
+                {
+                    player.gameObjects.Remove(obj);
 
                     bow.arrows.Remove(this);
 

@@ -22,6 +22,7 @@ namespace TopDownGame.Scripts.Assignment4.Objects.EnemyClasses.Enemies
 
             detectionRange = 300;
             speed = 250;
+            slowedSpeed = 200;
             
         }
 

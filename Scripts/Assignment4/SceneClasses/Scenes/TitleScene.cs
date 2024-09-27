@@ -20,12 +20,12 @@ namespace TopDownGame.Scripts.Assignment4.SceneClasses.Scenes
             gameObjects.Add(new Background(new Vector2(gWidth / 2, gHeight / 2), "Background"));
             gameObjects.Add(new ButtonNextScene(new Vector2(gWidth / 2, 400), "button", "fontSmall", "Start", sceneManager));
 
-            gameObjects.Add(new Sword(new Vector2(gWidth / 1.5f, gHeight / 2 + 200), "sword1", "font"));
-            gameObjects.Add(new Shield(new Vector2(gWidth / 1.5f, gHeight / 2), new string[] { "shield1", "shield1back" }, "font"));
-            gameObjects.Add(new Sword(new Vector2(gWidth / 1.5f + 200, gHeight / 2 + 200), "sword2", "font"));
-            gameObjects.Add(new Shield(new Vector2(gWidth / 1.5f + 200, gHeight / 2), new string[] { "shield2", "shield2back" }, "font"));
-            gameObjects.Add(new Sword(new Vector2(gWidth / 1.5f + 400, gHeight / 2 + 200), "sword3", "font"));
-            gameObjects.Add(new Shield(new Vector2(gWidth / 1.5f + 400, gHeight / 2), new string[] { "shield3", "shield3back" }, "font"));
+            gameObjects.Add(new Sword(new Vector2(gWidth / 1.5f, gHeight / 2 + 200), "sword1", "font", 1));
+            gameObjects.Add(new Shield(new Vector2(gWidth / 1.5f, gHeight / 2), new string[] { "shield1", "shield1back" }, "font", 1));
+            gameObjects.Add(new Sword(new Vector2(gWidth / 1.5f + 200, gHeight / 2 + 200), "sword2", "font",1 ));
+            gameObjects.Add(new Shield(new Vector2(gWidth / 1.5f + 200, gHeight / 2), new string[] { "shield2", "shield2back" }, "font", 1));
+            gameObjects.Add(new Sword(new Vector2(gWidth / 1.5f + 400, gHeight / 2 + 200), "sword3", "font",1));
+            gameObjects.Add(new Shield(new Vector2(gWidth / 1.5f + 400, gHeight / 2), new string[] { "shield3", "shield3back" }, "font", 1));
             gameObjects.Add(new Bow(new Vector2(gWidth / 2, gHeight / 1.2f), "bow", "font", "arrow"));
             gameObjects.Add(new GateNextScene(new Vector2(gWidth / 1.5f, gHeight / 4), new string[] { "gateclosed", "gateopen" }, "font", sceneManager));
             gameObjects.Add(new Enemy(new Vector2(gWidth / 3, gHeight / 4), new string[] { "enemy", "enemyLeft", "enemyRight", "enemyBack" }, 300f));
